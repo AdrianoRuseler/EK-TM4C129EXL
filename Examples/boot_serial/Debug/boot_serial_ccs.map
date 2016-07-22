@@ -1,0 +1,157 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.5                      
+******************************************************************************
+>> Linked Fri Jul 22 12:44:03 2016
+
+OUTPUT FILE NAME:   <boot_serial.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 200003a7
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00010000  0000054c  0000fab4  R  X
+  SRAM                  20000000   00010000  0000066c  0000f994  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+20000000    00000000    0000054c   0000054c    r-x
+  20000000    00000000    00000044   00000044    r-- .intvecs
+  20000044    00000044    00000504   00000504    r-x .text
+  20000548    00000548    00000004   00000004    r-- .const
+20000550    20000550    00000120   00000000    rw-
+  20000550    20000550    0000005d   00000000    rw- .bss
+  200005b0    200005b0    000000c0   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000044     RUN ADDR = 20000000
+                  00000000    00000044     bl_startup_ccs.obj (.intvecs)
+
+.text      0    00000044    00000504     RUN ADDR = 20000044
+                  00000044    0000020c     bl_main.obj (.text:Updater)
+                  00000250    000000c0     bl_main.obj (.text:ConfigureDevice)
+                  00000310    00000098     bl_startup_ccs.obj (.text)
+                  000003a8    0000006a     bl_packet.obj (.text:ReceivePacket)
+                  00000412    0000004a     bl_packet.obj (.text:SendPacket)
+                  0000045c    0000002e     bl_check.obj (.text:CheckForceUpdate)
+                  0000048a    00000002     --HOLE-- [fill = 0]
+                  0000048c    0000002c     bl_flash.obj (.text:BLInternalFlashStartAddrCheck)
+                  000004b8    00000024     bl_uart.obj (.text:UARTSend)
+                  000004dc    00000020     bl_uart.obj (.text:UARTReceive)
+                  000004fc    00000018     bl_packet.obj (.text:CheckSum)
+                  00000514    00000014     bl_uart.obj (.text:UARTFlush)
+                  00000528    0000000c     bl_packet.obj (.text:AckPacket)
+                  00000534    0000000c     bl_packet.obj (.text:NakPacket)
+                  00000540    00000008     bl_main.obj (.text:SwapWord)
+
+.const     0    00000548    00000004     RUN ADDR = 20000548
+                  00000548    00000004     bl_packet.obj (.const:.string)
+
+.data      0    0000054c    00000000     UNINITIALIZEDRUN ADDR = 2000054c
+
+.bss       0    20000550    0000005d     UNINITIALIZED
+                  20000550    00000050     bl_main.obj (.bss:g_pui32DataBuffer)
+                  200005a0    00000004     (.common:g_pui8DataBuffer)
+                  200005a4    00000004     (.common:g_ui32TransferAddress)
+                  200005a8    00000004     (.common:g_ui32TransferSize)
+                  200005ac    00000001     (.common:g_ui8Status)
+
+.stack     0    200005b0    000000c0     UNINITIALIZED
+                  200005b0    000000c0     bl_startup_ccs.obj (.stack)
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                         
+-------   ----                         
+20000529  AckPacket                    
+2000048d  BLInternalFlashStartAddrCheck
+2000045d  CheckForceUpdate             
+200004fd  CheckSum                     
+20000251  ConfigureDevice              
+200003a1  Delay                        
+20000535  NakPacket                    
+200003a9  ReceivePacket                
+20000355  ResetISR                     
+20000413  SendPacket                   
+20000377  StartApplication             
+20000541  SwapWord                     
+20000515  UARTFlush                    
+200004dd  UARTReceive                  
+200004b9  UARTSend                     
+20000045  Updater                      
+20000000  Vectors                      
+20000670  __STACK_END                  
+000000c0  __STACK_SIZE                 
+20000670  __STACK_TOP                  
+20000000  __TI_static_base__           
+ffffffff  __binit__                    
+ffffffff  __c_args__                   
+200005b0  __stack                      
+200003a7  _c_int00                     
+ffffffff  binit                        
+20000670  bss_end                      
+20000550  bss_run                      
+00000120  bss_size                     
+20000550  g_pui32DataBuffer            
+200005a0  g_pui8DataBuffer             
+200005a4  g_ui32TransferAddress        
+200005a8  g_ui32TransferSize           
+200005ac  g_ui8Status                  
+00000000  init_load                    
+20000000  init_run                     
+0000054c  init_size                    
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                         
+-------   ----                         
+00000000  init_load                    
+000000c0  __STACK_SIZE                 
+00000120  bss_size                     
+0000054c  init_size                    
+20000000  Vectors                      
+20000000  __TI_static_base__           
+20000000  init_run                     
+20000045  Updater                      
+20000251  ConfigureDevice              
+20000355  ResetISR                     
+20000377  StartApplication             
+200003a1  Delay                        
+200003a7  _c_int00                     
+200003a9  ReceivePacket                
+20000413  SendPacket                   
+2000045d  CheckForceUpdate             
+2000048d  BLInternalFlashStartAddrCheck
+200004b9  UARTSend                     
+200004dd  UARTReceive                  
+200004fd  CheckSum                     
+20000515  UARTFlush                    
+20000529  AckPacket                    
+20000535  NakPacket                    
+20000541  SwapWord                     
+20000550  bss_run                      
+20000550  g_pui32DataBuffer            
+200005a0  g_pui8DataBuffer             
+200005a4  g_ui32TransferAddress        
+200005a8  g_ui32TransferSize           
+200005ac  g_ui8Status                  
+200005b0  __stack                      
+20000670  __STACK_END                  
+20000670  __STACK_TOP                  
+20000670  bss_end                      
+ffffffff  __binit__                    
+ffffffff  __c_args__                   
+ffffffff  binit                        
+
+[37 symbols]

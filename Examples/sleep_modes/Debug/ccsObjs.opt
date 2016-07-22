@@ -1,0 +1,1 @@
+"./sleep_modes.obj" "./startup_ccs.obj" "./drivers/buttons.obj" "./utils/uartstdio.obj" "../sleep_modes_ccs.cmd" -llibc.a -l"C:/ti/TivaWare_C_Series-2.1.2.111/driverlib/ccs/Debug/driverlib.lib" 

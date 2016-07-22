@@ -1,0 +1,1 @@
+"./hibernate.obj" "./hibernate_commands.obj" "./startup_ccs.obj" "./drivers/buttons.obj" "./drivers/pinout.obj" "./utils/cmdline.obj" "./utils/uartstdio.obj" "./utils/ustdlib.obj" "../hibernate_ccs.cmd" -llibc.a -l"C:/ti/TivaWare_C_Series-2.1.2.111/driverlib/ccs/Debug/driverlib.lib" 

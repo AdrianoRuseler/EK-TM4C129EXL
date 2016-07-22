@@ -1,0 +1,1 @@
+"./startup_ccs.obj" "./usb_dev_cserial.obj" "./usb_structs.obj" "./drivers/pinout.obj" "./utils/cmdline.obj" "./utils/ustdlib.obj" "../usb_dev_cserial_ccs.cmd" -llibc.a -l"C:/ti/TivaWare_C_Series-2.1.2.111/driverlib/ccs/Debug/driverlib.lib" -l"C:/ti/TivaWare_C_Series-2.1.2.111/usblib/ccs/Debug/usblib.lib" 

@@ -1,0 +1,290 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.5                      
+******************************************************************************
+>> Linked Fri Jul 22 12:47:20 2016
+
+OUTPUT FILE NAME:   <shamd5_hmac_example.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000d29
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00100000  00001262  000fed9e  R  X
+  SRAM                  20000000   00040000  000006f0  0003f910  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00001268   00001268    r-x
+  00000000    00000000    00000200   00000200    r-- .intvecs
+  00000200    00000200    00000db4   00000db4    r-x .text
+  00000fb4    00000fb4    00000216   00000216    r-- .const
+  000011d0    000011d0    00000098   00000098    r-- .cinit
+20000000    20000000    000006f0   00000000    rw-
+  20000000    20000000    00000400   00000000    rw- .stack
+  20000400    20000400    00000268   00000000    rw- .bss
+  20000668    20000668    00000088   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000200     
+                  00000000    00000200     startup_ccs.obj (.intvecs)
+
+.text      0    00000200    00000db4     
+                  00000200    000001ea     uartstdio.obj (.text:UARTvprintf)
+                  000003ea    00000002     startup_ccs.obj (.text:FaultISR)
+                  000003ec    00000154     shamd5_hmac_example.obj (.text:Cmd_algo)
+                  00000540    00000120     shamd5_hmac_example.obj (.text:main)
+                  00000660    000000dc     shamd5_hmac_example.obj (.text:Cmd_hmac)
+                  0000073c    000000c4     shamd5_hmac_example.obj (.text:Cmd_key)
+                  00000800    000000c0     shamd5_hmac_example.obj (.text:Cmd_data)
+                  000008c0    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  0000095c    00000098     uartstdio.obj (.text:UARTgets)
+                  000009f4    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
+                  00000a6e    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  00000a70    0000006c     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
+                  00000adc    0000006a                                   : copy_decompress_rle.obj (.text)
+                  00000b46    00000002     startup_ccs.obj (.text:NmiSR)
+                  00000b48    00000068     shamd5_hmac_example.obj (.text:InitConsole)
+                  00000bb0    00000064     cmdline.obj (.text:CmdLineProcess)
+                  00000c14    00000064     shamd5_hmac_example.obj (.text:Cmd_help)
+                  00000c78    00000060     uartstdio.obj (.text:UARTStdioConfig)
+                  00000cd8    00000050     shamd5_hmac_example.obj (.text:Cmd_reset)
+                  00000d28    00000050     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
+                  00000d78    0000004c                                   : cpy_tbl.obj (.text)
+                  00000dc4    00000048     uartstdio.obj (.text:UARTwrite)
+                  00000e0c    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.text)
+                  00000e50    00000040                                   : u_divt2.obj (.text)
+                  00000e90    00000036     ustdlib.obj (.text:ustrncmp)
+                  00000ec6    0000002a     ustdlib.obj (.text:ustrncpy)
+                  00000ef0    0000001e     rtsv7M4_T_le_v4SPD16_eabi.lib : strcat.obj (.text)
+                  00000f0e    0000001a     uartstdio.obj (.text:UARTprintf)
+                  00000f28    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00000f40    00000018                                   : strcmp.obj (.text)
+                  00000f58    00000014                                   : _lock.obj (.text)
+                  00000f6c    00000014                                   : strlen.obj (.text)
+                  00000f80    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  00000f8e    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
+                  00000f9a    00000008     ustdlib.obj (.text:ustrcmp)
+                  00000fa2    00000006     startup_ccs.obj (.text:ResetISR)
+                  00000fa8    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00000fae    00000004                                   : pre_init.obj (.text)
+                  00000fb2    00000002                                   : i_div0.obj (.text)
+
+.const     0    00000fb4    00000216     
+                  00000fb4    000001e8     shamd5_hmac_example.obj (.const:.string)
+                  0000119c    0000001c     uartstdio.obj (.const)
+                  000011b8    00000012     uartstdio.obj (.const:.string)
+
+.cinit     0    000011d0    00000098     
+                  000011d0    00000070     (.cinit..data.load) [load image, compression = rle]
+                  00001240    0000000c     (__TI_handler_table)
+                  0000124c    00000004     --HOLE-- [fill = 0]
+                  00001250    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00001258    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000400     UNINITIALIZED
+                  20000000    00000400     --HOLE--
+
+.bss       0    20000400    00000268     UNINITIALIZED
+                  20000400    00000100     shamd5_hmac_example.obj (.bss:g_pcHMACData)
+                  20000500    00000100     shamd5_hmac_example.obj (.bss:g_pcHMACKey)
+                  20000600    00000040     shamd5_hmac_example.obj (.bss:g_pcCmdBuf)
+                  20000640    00000024     cmdline.obj (.bss:g_ppcArgv)
+                  20000664    00000004     (.common:g_ui32HMACSizeInBytes)
+
+.TI.noinit 
+*          0    20000400    00000000     UNINITIALIZED
+
+.data      0    20000668    00000088     UNINITIALIZED
+                  20000668    0000006c     shamd5_hmac_example.obj (.data:g_psCmdTable)
+                  200006d4    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  200006dc    00000008                                   : exit.obj (.data)
+                  200006e4    00000005     uartstdio.obj (.data)
+                  200006e9    00000003     --HOLE--
+                  200006ec    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
+
+.TI.persistent 
+*          0    20000668    00000000     UNINITIALIZED
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00001258 records: 2, size/record: 8, table size: 16
+	.data: load addr=000011d0, load size=00000070 bytes, run addr=20000668, run size=00000088 bytes, compression=rle
+	.bss: load addr=00001250, load size=00000008 bytes, run addr=20000400, run size=00000268 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00001240 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                    
+-------   ----                    
+00000e0d  C$$EXIT                 
+00000bb1  CmdLineProcess          
+000003ed  Cmd_algo                
+00000801  Cmd_data                
+00000c15  Cmd_help                
+00000661  Cmd_hmac                
+0000073d  Cmd_key                 
+00000cd9  Cmd_reset               
+00000b49  InitConsole             
+00000fa3  ResetISR                
+UNDEFED   SHT$$INIT_ARRAY$$Base   
+UNDEFED   SHT$$INIT_ARRAY$$Limit  
+00000c79  UARTStdioConfig         
+0000095d  UARTgets                
+00000f0f  UARTprintf              
+00000201  UARTvprintf             
+00000dc5  UARTwrite               
+20000400  __STACK_END             
+00000400  __STACK_SIZE            
+20000400  __STACK_TOP             
+00001258  __TI_CINIT_Base         
+00001268  __TI_CINIT_Limit        
+00001240  __TI_Handler_Table_Base 
+0000124c  __TI_Handler_Table_Limit
+00000a71  __TI_auto_init          
+200006dc  __TI_cleanup_ptr        
+00000f81  __TI_decompress_none    
+00000fa9  __TI_decompress_rle24   
+200006e0  __TI_dtors_ptr          
+00000000  __TI_static_base__      
+00000f8f  __TI_zero_init          
+00000fb3  __aeabi_idiv0           
+000009f5  __aeabi_memclr          
+000009f5  __aeabi_memclr4         
+000009f5  __aeabi_memclr8         
+000008c1  __aeabi_memcpy          
+000008c1  __aeabi_memcpy4         
+000008c1  __aeabi_memcpy8         
+000009f7  __aeabi_memset          
+000009f7  __aeabi_memset4         
+000009f7  __aeabi_memset8         
+00000e51  __aeabi_uidiv           
+00000e51  __aeabi_uidivmod        
+ffffffff  __binit__               
+ffffffff  __c_args__              
+20000000  __stack                 
+00000f29  _args_main              
+00000d29  _c_int00                
+200006d4  _lock                   
+00000f67  _nop                    
+00000f5f  _register_lock          
+00000f59  _register_unlock        
+00000faf  _system_pre_init        
+200006d8  _unlock                 
+00000e11  abort                   
+ffffffff  binit                   
+00000d79  copy_in                 
+00000e19  exit                    
+00000000  g_pfnVectors            
+20000668  g_psCmdTable            
+20000664  g_ui32HMACSizeInBytes   
+00000541  main                    
+200006ec  main_func_sp            
+000008c1  memcpy                  
+000009fd  memset                  
+00000ef1  strcat                  
+00000f41  strcmp                  
+00000f6d  strlen                  
+00000f9b  ustrcmp                 
+00000e91  ustrncmp                
+00000ec7  ustrncpy                
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                    
+-------   ----                    
+00000000  __TI_static_base__      
+00000000  g_pfnVectors            
+00000201  UARTvprintf             
+000003ed  Cmd_algo                
+00000400  __STACK_SIZE            
+00000541  main                    
+00000661  Cmd_hmac                
+0000073d  Cmd_key                 
+00000801  Cmd_data                
+000008c1  __aeabi_memcpy          
+000008c1  __aeabi_memcpy4         
+000008c1  __aeabi_memcpy8         
+000008c1  memcpy                  
+0000095d  UARTgets                
+000009f5  __aeabi_memclr          
+000009f5  __aeabi_memclr4         
+000009f5  __aeabi_memclr8         
+000009f7  __aeabi_memset          
+000009f7  __aeabi_memset4         
+000009f7  __aeabi_memset8         
+000009fd  memset                  
+00000a71  __TI_auto_init          
+00000b49  InitConsole             
+00000bb1  CmdLineProcess          
+00000c15  Cmd_help                
+00000c79  UARTStdioConfig         
+00000cd9  Cmd_reset               
+00000d29  _c_int00                
+00000d79  copy_in                 
+00000dc5  UARTwrite               
+00000e0d  C$$EXIT                 
+00000e11  abort                   
+00000e19  exit                    
+00000e51  __aeabi_uidiv           
+00000e51  __aeabi_uidivmod        
+00000e91  ustrncmp                
+00000ec7  ustrncpy                
+00000ef1  strcat                  
+00000f0f  UARTprintf              
+00000f29  _args_main              
+00000f41  strcmp                  
+00000f59  _register_unlock        
+00000f5f  _register_lock          
+00000f67  _nop                    
+00000f6d  strlen                  
+00000f81  __TI_decompress_none    
+00000f8f  __TI_zero_init          
+00000f9b  ustrcmp                 
+00000fa3  ResetISR                
+00000fa9  __TI_decompress_rle24   
+00000faf  _system_pre_init        
+00000fb3  __aeabi_idiv0           
+00001240  __TI_Handler_Table_Base 
+0000124c  __TI_Handler_Table_Limit
+00001258  __TI_CINIT_Base         
+00001268  __TI_CINIT_Limit        
+20000000  __stack                 
+20000400  __STACK_END             
+20000400  __STACK_TOP             
+20000664  g_ui32HMACSizeInBytes   
+20000668  g_psCmdTable            
+200006d4  _lock                   
+200006d8  _unlock                 
+200006dc  __TI_cleanup_ptr        
+200006e0  __TI_dtors_ptr          
+200006ec  main_func_sp            
+ffffffff  __binit__               
+ffffffff  __c_args__              
+ffffffff  binit                   
+UNDEFED   SHT$$INIT_ARRAY$$Base   
+UNDEFED   SHT$$INIT_ARRAY$$Limit  
+
+[71 symbols]
