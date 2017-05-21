@@ -2,7 +2,7 @@
  *
  * enet_weather_ccs.cmd - CCS linker configuration file for enet_weather.
  *
- * Copyright (c) 2013-2015 Texas Instruments Incorporated.  All rights reserved.
+ * Copyright (c) 2013-2017 Texas Instruments Incorporated.  All rights reserved.
  * Software License Agreement
  * 
  * Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
  * CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
  * DAMAGES, FOR ANY REASON WHATSOEVER.
  * 
- * This is part of revision 2.1.2.111 of the EK-TM4C129EXL Firmware Package.
+ * This is part of revision 2.1.4.178 of the EK-TM4C129EXL Firmware Package.
  *
  *****************************************************************************/
 

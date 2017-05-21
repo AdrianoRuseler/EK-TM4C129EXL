@@ -2,7 +2,7 @@
 //
 // lwipopts.h - Configuration file for lwIP.
 //
-// Copyright (c) 2014-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2014-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.2.111 of the EK-TM4C129EXL Firmware Package.
+// This is part of revision 2.1.4.178 of the EK-TM4C129EXL Firmware Package.
 //
 //*****************************************************************************
 //
@@ -46,9 +46,21 @@
 #define LWIP_HTTPD_DYNAMIC_HEADERS 1
 //#define EMAC_PHY_CONFIG EMAC_PHY_TYPE_EXTERNAL_RMII
 //#define PHY_PHYS_ADDR      1
+#if !defined(EMAC_PHY_IS_EXT_MII) && !defined(EMAC_PHY_IS_EXT_RMII)
 #define EMAC_PHY_CONFIG (EMAC_PHY_TYPE_INTERNAL | EMAC_PHY_INT_MDIX_EN |      \
                          EMAC_PHY_AN_100B_T_FULL_DUPLEX)
 #define PHY_PHYS_ADDR      0
+#endif
+#if defined(EMAC_PHY_IS_EXT_MII)
+#define EMAC_PHY_CONFIG  EMAC_PHY_TYPE_EXTERNAL_MII
+#define PHY_PHYS_ADDR      1
+//#define EEE_SUPPORT        1
+#endif
+#if defined(EMAC_PHY_IS_EXT_RMII)
+#define EMAC_PHY_CONFIG  EMAC_PHY_TYPE_EXTERNAL_RMII
+#define PHY_PHYS_ADDR      1
+//#define EEE_SUPPORT        1
+#endif
 #define NUM_TX_DESCRIPTORS 8
 #define NUM_RX_DESCRIPTORS 8
 

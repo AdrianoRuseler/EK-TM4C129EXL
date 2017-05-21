@@ -2,7 +2,7 @@
 //
 // aes_example.c - Simple AES Encryption-Decryption Example
 //
-// Copyright (c) 2013-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2013-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 //
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -61,7 +61,7 @@
 //!
 //! The examples from NIST specification at the following link have been used
 //! to validate the AES outptut.
-//! http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf
+//! http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38a.pdf
 //!
 //! Please note that uDMA is not used in this example.
 //

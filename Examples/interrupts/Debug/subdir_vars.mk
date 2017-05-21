@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
+SHELL = cmd.exe
+
 # Add inputs and outputs from these tool invocations to the build variables 
 CMD_SRCS += \
 ../interrupts_ccs.cmd 
@@ -10,21 +12,21 @@ C_SRCS += \
 ../interrupts.c \
 ../startup_ccs.c 
 
-OBJS += \
-./interrupts.obj \
-./startup_ccs.obj 
-
 C_DEPS += \
 ./interrupts.d \
 ./startup_ccs.d 
 
-C_DEPS__QUOTED += \
-"interrupts.d" \
-"startup_ccs.d" 
+OBJS += \
+./interrupts.obj \
+./startup_ccs.obj 
 
 OBJS__QUOTED += \
 "interrupts.obj" \
 "startup_ccs.obj" 
+
+C_DEPS__QUOTED += \
+"interrupts.d" \
+"startup_ccs.d" 
 
 C_SRCS__QUOTED += \
 "../interrupts.c" \

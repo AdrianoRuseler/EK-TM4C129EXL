@@ -2,7 +2,7 @@
 //
 // lwiplib.c - lwIP TCP/IP Library Abstraction Layer.
 //
-// Copyright (c) 2008-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2008-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.2.111 of the Tiva Utility Library.
+// This is part of revision 2.1.4.178 of the Tiva Utility Library.
 //
 //*****************************************************************************
 
@@ -448,7 +448,8 @@ lwIPLinkDetect(void)
     //
     // See if there is an active link.
     //
-    bHaveLink = MAP_EMACPHYRead(EMAC0_BASE, 0, EPHY_BMSR) & EPHY_BMSR_LINKSTAT;
+    bHaveLink = MAP_EMACPHYRead(EMAC0_BASE, PHY_PHYS_ADDR, EPHY_BMSR) & 
+                                EPHY_BMSR_LINKSTAT;
 
     //
     // Return without doing anything else if the link state hasn't changed.
@@ -867,7 +868,7 @@ lwIPInit(uint32_t ui32SysClkHz, const uint8_t *pui8MAC, uint32_t ui32IPAddr,
     //
     // Configure for use with whichever PHY the user requires.
     //
-    MAP_EMACPHYConfigSet(EMAC0_BASE, EMAC_PHY_CONFIG);
+    EMACPHYConfigSet(EMAC0_BASE, EMAC_PHY_CONFIG);
 
     //
     // Initialize the MAC and set the DMA mode.
@@ -1014,7 +1015,29 @@ lwIPEthernetIntHandler(void)
     //
     // Read and Clear the interrupt.
     //
-    ui32Status = MAP_EMACIntStatus(EMAC0_BASE, true);
+    ui32Status = EMACIntStatus(EMAC0_BASE, true);
+
+#if EEE_SUPPORT
+    if(ui32Status & EMAC_INT_LPI)
+    {
+        EMACLPIStatus(EMAC0_BASE);
+    }
+#endif
+
+    //
+    // If the PMT mode exit status bit is set then enable the MAC transmit
+    // and receive paths, read the PMT status to clear the interrupt and
+    // clear the interrupt flag.
+    //
+    if(ui32Status & EMAC_INT_POWER_MGMNT)
+    {
+        MAP_EMACTxEnable(EMAC0_BASE);
+        MAP_EMACRxEnable(EMAC0_BASE);
+
+        EMACPowerManagementStatusGet(EMAC0_BASE);
+
+        ui32Status &= ~(EMAC_INT_POWER_MGMNT);
+    }
 
     //
     // If the interrupt really came from the Ethernet and not our

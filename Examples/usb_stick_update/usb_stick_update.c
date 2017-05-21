@@ -2,7 +2,7 @@
 //
 // usb_stick_update.c - Example to update flash from a USB memory stick.
 //
-// Copyright (c) 2013-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2013-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.2.111 of the EK-TM4C129EXL Firmware Package.
+// This is part of revision 2.1.4.178 of the EK-TM4C129EXL Firmware Package.
 //
 //*****************************************************************************
 
@@ -631,6 +631,8 @@ UpdaterUSB(void)
 void
 ConfigureUSBInterface(void)
 {
+    uint32_t ui32PLLRate;
+
     //
     // Enable the uDMA controller and set up the control table base.
     // This is required by usblib.
@@ -671,6 +673,14 @@ ConfigureUSBInterface(void)
     // to be active high and does not enable the power fault.
     //
     USBHCDPowerConfigInit(0, USBHCD_VBUS_AUTO_HIGH | USBHCD_VBUS_FILTER);
+
+    //
+    // Tell the USB library the CPU clock and the PLL frequency.  This is a
+    // new requirement for TM4C129 devices.
+    //
+    SysCtlVCOGet(SYSCTL_XTAL_25MHZ, &ui32PLLRate);
+    USBHCDFeatureSet(0, USBLIB_FEATURE_CPUCLK, &g_ui32SysClock);
+    USBHCDFeatureSet(0, USBLIB_FEATURE_USBPLL, &ui32PLLRate);
 
     //
     // Force the USB mode to host with no callback on mode changes since

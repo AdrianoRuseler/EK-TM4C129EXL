@@ -8,6 +8,6 @@
 	<isElfFormat value="true"/>
 	<rts value="libc.a"/>
 	<createSlaveProjects value=""/>
-	<origin value="C:/ti/TivaWare_C_Series-2.1.2.111/examples/boards/ek-tm4c129exl/usb_dev_bulk/ccs"/>
+	<origin value="C:/ti/TivaWare_C_Series-2.1.4.178/examples/boards/ek-tm4c129exl/usb_dev_bulk/ccs"/>
 	<isTargetManual value="true"/>
 </projectOptions>

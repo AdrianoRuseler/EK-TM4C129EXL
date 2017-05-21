@@ -1,33 +1,33 @@
 ******************************************************************************
-                  TI ARM Linker PC v5.2.5                      
+                  TI ARM Linker PC v16.9.0                     
 ******************************************************************************
->> Linked Fri Jul 22 12:49:15 2016
+>> Linked Sun May 21 10:07:28 2017
 
 OUTPUT FILE NAME:   <watchdog.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 00000859
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000855
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00100000  00000c90  000ff370  R  X
-  SRAM                  20000000   00040000  0000021c  0003fde4  RW X
+  FLASH                 00000000   00100000  00000d2e  000ff2d2  R  X
+  SRAM                  20000000   00040000  00000220  0003fde0  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00000c90   00000c90    r-x
+00000000    00000000    00000d30   00000d30    r-x
   00000000    00000000    00000200   00000200    r-- .intvecs
-  00000200    00000200    00000894   00000894    r-x .text
-  00000a94    00000a94    000001c4   000001c4    r-- .const
-  00000c58    00000c58    00000038   00000038    r-- .cinit
-20000000    20000000    0000021c   00000000    rw-
+  00000200    00000200    000008a2   000008a2    r-x .text
+  00000aa4    00000aa4    00000254   00000254    r-- .const
+  00000cf8    00000cf8    00000038   00000038    r-- .cinit
+20000000    20000000    00000220   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
-  20000200    20000200    00000018   00000000    rw- .data
-  20000218    20000218    00000004   00000000    rw- .bss
+  20000200    20000200    0000001c   00000000    rw- .data
+  2000021c    2000021c    00000004   00000000    rw- .bss
 
 
 SECTION ALLOCATION MAP
@@ -38,47 +38,46 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    00000200     
                   00000000    00000200     startup_ccs.obj (.intvecs)
 
-.text      0    00000200    00000894     
-                  00000200    00000204     driverlib.lib : sysctl.obj (.text:SysCtlClockFreqSet)
-                  00000404    00000132                   : gpio.obj (.text:GPIOPadConfigSet)
-                  00000536    00000002     startup_ccs.obj (.text:FaultISR)
-                  00000538    000000a4     watchdog.obj (.text:main)
-                  000005dc    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
-                  00000678    0000008c     buttons.obj (.text:ButtonsPoll)
-                  00000704    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
-                  0000077e    00000002     startup_ccs.obj (.text:IntDefaultHandler)
-                  00000780    0000006c     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
-                  000007ec    0000006a                                   : copy_decompress_rle.obj (.text)
-                  00000856    00000002     startup_ccs.obj (.text:NmiSR)
-                  00000858    00000050     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
-                  000008a8    0000004c     buttons.obj (.text:ButtonsInit)
-                  000008f4    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
-                  00000940    00000048     driverlib.lib : sysctl.obj (.text:_SysCtlFrequencyGet)
-                  00000988    00000044     watchdog.obj (.text:WatchdogIntHandler)
-                  000009cc    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.text)
-                  00000a10    00000020     driverlib.lib : sysctl.obj (.text:_SysCtlMemTimingGet)
-                  00000a30    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
-                  00000a48    00000014                                   : _lock.obj (.text)
-                  00000a5c    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
-                  00000a6a    00000002     --HOLE-- [fill = 0]
-                  00000a6c    0000000c     watchdog.obj (.text:SW1ButtonPressed)
-                  00000a78    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
-                  00000a84    00000006     startup_ccs.obj (.text:ResetISR)
-                  00000a8a    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
-                  00000a90    00000004                                   : pre_init.obj (.text)
+.text      0    00000200    000008a2     
+                  00000200    00000200     driverlib.lib : sysctl.obj (.text:SysCtlClockFreqSet)
+                  00000400    00000132                   : gpio.obj (.text:GPIOPadConfigSet)
+                  00000532    00000002     startup_ccs.obj (.text:FaultISR)
+                  00000534    000000a4     watchdog.obj (.text:main)
+                  000005d8    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  00000674    0000008c     buttons.obj (.text:ButtonsPoll)
+                  00000700    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
+                  0000077a    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  0000077c    00000070     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
+                  000007ec    00000068                                   : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  00000854    00000054                                   : boot.obj (.text)
+                  000008a8    00000054                                   : exit.obj (.text)
+                  000008fc    0000004c     buttons.obj (.text:ButtonsInit)
+                  00000948    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  00000994    00000048     driverlib.lib : sysctl.obj (.text:_SysCtlFrequencyGet)
+                  000009dc    00000044     watchdog.obj (.text:WatchdogIntHandler)
+                  00000a20    00000020     driverlib.lib : sysctl.obj (.text:_SysCtlMemTimingGet)
+                  00000a40    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00000a58    00000014                                   : _lock.obj (.text)
+                  00000a6c    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  00000a7a    00000002     startup_ccs.obj (.text:NmiSR)
+                  00000a7c    0000000c     watchdog.obj (.text:SW1ButtonPressed)
+                  00000a88    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  00000a94    00000006     startup_ccs.obj (.text:ResetISR)
+                  00000a9a    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
+                  00000a9e    00000002                                   : mpu_init.obj (.text)
+                  00000aa0    00000002                                   : startup.obj (.text)
 
-.const     0    00000a94    000001c4     
-                  00000a94    00000120     driverlib.lib : sysctl.obj (.const:g_pppui32XTALtoVCO)
-                  00000bb4    0000006c                   : sysctl.obj (.const:g_pui32Xtals)
-                  00000c20    00000030                   : sysctl.obj (.const:g_sXTALtoMEMTIM)
-                  00000c50    00000008                   : sysctl.obj (.const)
+.const     0    00000aa4    00000254     
+                  00000aa4    000001b0     driverlib.lib : sysctl.obj (.const:g_pppui32XTALtoVCO)
+                  00000c54    0000006c                   : sysctl.obj (.const:g_pui32Xtals)
+                  00000cc0    00000030                   : sysctl.obj (.const:g_sXTALtoMEMTIM)
+                  00000cf0    00000008                   : sysctl.obj (.const)
 
-.cinit     0    00000c58    00000038     
-                  00000c58    00000013     (.cinit..data.load) [load image, compression = rle]
-                  00000c6b    00000001     --HOLE-- [fill = 0]
-                  00000c6c    0000000c     (__TI_handler_table)
-                  00000c78    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00000c80    00000010     (__TI_cinit_table)
+.cinit     0    00000cf8    00000038     
+                  00000cf8    00000014     (.cinit..data.load) [load image, compression = lzss]
+                  00000d0c    0000000c     (__TI_handler_table)
+                  00000d18    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000d20    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -86,155 +85,206 @@ section   page    origin      length       input sections
 .stack     0    20000000    00000200     UNINITIALIZED
                   20000000    00000200     --HOLE--
 
-.data      0    20000200    00000018     UNINITIALIZED
-                  20000200    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
-                  20000208    00000008                                   : exit.obj (.data)
-                  20000210    00000004                                   : stkdepth_vars.obj (.data)
-                  20000214    00000003     buttons.obj (.data)
-                  20000217    00000001     watchdog.obj (.data)
+.data      0    20000200    0000001c     UNINITIALIZED
+                  20000200    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
+                  2000020c    00000008                                   : _lock.obj (.data:$O1$$)
+                  20000214    00000004                                   : stkdepth_vars.obj (.data)
+                  20000218    00000003     buttons.obj (.data)
+                  2000021b    00000001     watchdog.obj (.data)
 
-.bss       0    20000218    00000004     UNINITIALIZED
-                  20000218    00000004     (.common:g_ui32SysClock)
+.bss       0    2000021c    00000004     UNINITIALIZED
+                  2000021c    00000004     (.common:g_ui32SysClock)
 
-.TI.persistent 
-*          0    20000200    00000000     UNINITIALIZED
+MODULE SUMMARY
 
-.TI.noinit 
-*          0    20000218    00000000     UNINITIALIZED
+       Module                     code   ro data   rw data
+       ------                     ----   -------   -------
+    .\
+       startup_ccs.obj            12     512       0      
+       watchdog.obj               244    0         5      
+    +--+--------------------------+------+---------+---------+
+       Total:                     256    512       5      
+                                                          
+    .\drivers\
+       buttons.obj                216    0         3      
+    +--+--------------------------+------+---------+---------+
+       Total:                     216    0         3      
+                                                          
+    C:/ti/TivaWare_C_Series-2.1.4.178/driverlib/ccs/Debug/driverlib.lib
+       sysctl.obj                 616    596       0      
+       gpio.obj                   306    0         0      
+    +--+--------------------------+------+---------+---------+
+       Total:                     922    596       0      
+                                                          
+    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.0.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.obj              156    0         0      
+       memset_t2.obj              122    0         0      
+       autoinit.obj               112    0         0      
+       copy_decompress_lzss.obj   104    0         0      
+       exit.obj                   84     0         12     
+       boot.obj                   84     0         0      
+       cpy_tbl.obj                76     0         0      
+       _lock.obj                  20     0         8      
+       args_main.obj              24     0         0      
+       copy_decompress_none.obj   14     0         0      
+       copy_zero_init.obj         12     0         0      
+       pre_init.obj               4      0         0      
+       stkdepth_vars.obj          0      0         4      
+       mpu_init.obj               2      0         0      
+       startup.obj                2      0         0      
+    +--+--------------------------+------+---------+---------+
+       Total:                     816    0         24     
+                                                          
+       Stack:                     0      0         512    
+       Linker Generated:          0      56        0      
+    +--+--------------------------+------+---------+---------+
+       Grand Total:               2210   1164      544    
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00000c80 records: 2, size/record: 8, table size: 16
-	.data: load addr=00000c58, load size=00000013 bytes, run addr=20000200, run size=00000018 bytes, compression=rle
-	.bss: load addr=00000c78, load size=00000008 bytes, run addr=20000218, run size=00000004 bytes, compression=zero_init
+__TI_cinit_table @ 00000d20 records: 2, size/record: 8, table size: 16
+	.data: load addr=00000cf8, load size=00000014 bytes, run addr=20000200, run size=0000001c bytes, compression=lzss
+	.bss: load addr=00000d18, load size=00000008 bytes, run addr=2000021c, run size=00000004 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00000c6c records: 3, size/record: 4, table size: 12
-	index: 0, handler: __TI_decompress_rle24
+__TI_handler_table @ 00000d0c records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
-address   name                    
--------   ----                    
-000008a9  ButtonsInit             
-00000679  ButtonsPoll             
-000009cd  C$$EXIT                 
-00000405  GPIOPadConfigSet        
-00000a85  ResetISR                
-UNDEFED   SHT$$INIT_ARRAY$$Base   
-UNDEFED   SHT$$INIT_ARRAY$$Limit  
-00000201  SysCtlClockFreqSet      
-00000989  WatchdogIntHandler      
-20000200  __STACK_END             
-00000200  __STACK_SIZE            
-20000200  __STACK_TOP             
-00000c80  __TI_CINIT_Base         
-00000c90  __TI_CINIT_Limit        
-00000c6c  __TI_Handler_Table_Base 
-00000c78  __TI_Handler_Table_Limit
-00000781  __TI_auto_init          
-20000208  __TI_cleanup_ptr        
-00000a5d  __TI_decompress_none    
-00000a8b  __TI_decompress_rle24   
-2000020c  __TI_dtors_ptr          
-00000000  __TI_static_base__      
-00000a79  __TI_zero_init          
-00000705  __aeabi_memclr          
-00000705  __aeabi_memclr4         
-00000705  __aeabi_memclr8         
-000005dd  __aeabi_memcpy          
-000005dd  __aeabi_memcpy4         
-000005dd  __aeabi_memcpy8         
-00000707  __aeabi_memset          
-00000707  __aeabi_memset4         
-00000707  __aeabi_memset8         
-ffffffff  __binit__               
-ffffffff  __c_args__              
-20000000  __stack                 
-00000a31  _args_main              
-00000859  _c_int00                
-20000200  _lock                   
-00000a57  _nop                    
-00000a4f  _register_lock          
-00000a49  _register_unlock        
-00000a91  _system_pre_init        
-20000204  _unlock                 
-000009d1  abort                   
-ffffffff  binit                   
-000008f5  copy_in                 
-000009d9  exit                    
-20000217  g_bFeedWatchdog         
-00000000  g_pfnVectors            
-20000218  g_ui32SysClock          
-00000539  main                    
-20000210  main_func_sp            
-000005dd  memcpy                  
-0000070d  memset                  
+address   name                           
+-------   ----                           
+000008fd  ButtonsInit                    
+00000675  ButtonsPoll                    
+000008a9  C$$EXIT                        
+00000401  GPIOPadConfigSet               
+00000a95  ResetISR                       
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+00000201  SysCtlClockFreqSet             
+000009dd  WatchdogIntHandler             
+20000200  __STACK_END                    
+00000200  __STACK_SIZE                   
+20000200  __STACK_TOP                    
+00000d20  __TI_CINIT_Base                
+00000d30  __TI_CINIT_Limit               
+00000d0c  __TI_Handler_Table_Base        
+00000d18  __TI_Handler_Table_Limit       
+0000077d  __TI_auto_init                 
+20000200  __TI_cleanup_ptr               
+000007ed  __TI_decompress_lzss           
+00000a6d  __TI_decompress_none           
+20000204  __TI_dtors_ptr                 
+20000208  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00000000  __TI_static_base__             
+00000a89  __TI_zero_init                 
+00000701  __aeabi_memclr                 
+00000701  __aeabi_memclr4                
+00000701  __aeabi_memclr8                
+000005d9  __aeabi_memcpy                 
+000005d9  __aeabi_memcpy4                
+000005d9  __aeabi_memcpy8                
+00000703  __aeabi_memset                 
+00000703  __aeabi_memset4                
+00000703  __aeabi_memset8                
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+00000a9f  __mpu_init                     
+20000000  __stack                        
+00000a41  _args_main                     
+00000855  _c_int00                       
+2000020c  _lock                          
+00000a67  _nop                           
+00000a5f  _register_lock                 
+00000a59  _register_unlock               
+00000aa1  _system_post_cinit             
+00000a9b  _system_pre_init               
+20000210  _unlock                        
+000008ad  abort                          
+ffffffff  binit                          
+00000949  copy_in                        
+000008b5  exit                           
+2000021b  g_bFeedWatchdog                
+00000000  g_pfnVectors                   
+2000021c  g_ui32SysClock                 
+00000535  main                           
+20000214  main_func_sp                   
+000005d9  memcpy                         
+00000709  memset                         
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
-address   name                    
--------   ----                    
-00000000  __TI_static_base__      
-00000000  g_pfnVectors            
-00000200  __STACK_SIZE            
-00000201  SysCtlClockFreqSet      
-00000405  GPIOPadConfigSet        
-00000539  main                    
-000005dd  __aeabi_memcpy          
-000005dd  __aeabi_memcpy4         
-000005dd  __aeabi_memcpy8         
-000005dd  memcpy                  
-00000679  ButtonsPoll             
-00000705  __aeabi_memclr          
-00000705  __aeabi_memclr4         
-00000705  __aeabi_memclr8         
-00000707  __aeabi_memset          
-00000707  __aeabi_memset4         
-00000707  __aeabi_memset8         
-0000070d  memset                  
-00000781  __TI_auto_init          
-00000859  _c_int00                
-000008a9  ButtonsInit             
-000008f5  copy_in                 
-00000989  WatchdogIntHandler      
-000009cd  C$$EXIT                 
-000009d1  abort                   
-000009d9  exit                    
-00000a31  _args_main              
-00000a49  _register_unlock        
-00000a4f  _register_lock          
-00000a57  _nop                    
-00000a5d  __TI_decompress_none    
-00000a79  __TI_zero_init          
-00000a85  ResetISR                
-00000a8b  __TI_decompress_rle24   
-00000a91  _system_pre_init        
-00000c6c  __TI_Handler_Table_Base 
-00000c78  __TI_Handler_Table_Limit
-00000c80  __TI_CINIT_Base         
-00000c90  __TI_CINIT_Limit        
-20000000  __stack                 
-20000200  __STACK_END             
-20000200  __STACK_TOP             
-20000200  _lock                   
-20000204  _unlock                 
-20000208  __TI_cleanup_ptr        
-2000020c  __TI_dtors_ptr          
-20000210  main_func_sp            
-20000217  g_bFeedWatchdog         
-20000218  g_ui32SysClock          
-ffffffff  __binit__               
-ffffffff  __c_args__              
-ffffffff  binit                   
-UNDEFED   SHT$$INIT_ARRAY$$Base   
-UNDEFED   SHT$$INIT_ARRAY$$Limit  
+address   name                           
+-------   ----                           
+00000000  __TI_static_base__             
+00000000  g_pfnVectors                   
+00000200  __STACK_SIZE                   
+00000201  SysCtlClockFreqSet             
+00000401  GPIOPadConfigSet               
+00000535  main                           
+000005d9  __aeabi_memcpy                 
+000005d9  __aeabi_memcpy4                
+000005d9  __aeabi_memcpy8                
+000005d9  memcpy                         
+00000675  ButtonsPoll                    
+00000701  __aeabi_memclr                 
+00000701  __aeabi_memclr4                
+00000701  __aeabi_memclr8                
+00000703  __aeabi_memset                 
+00000703  __aeabi_memset4                
+00000703  __aeabi_memset8                
+00000709  memset                         
+0000077d  __TI_auto_init                 
+000007ed  __TI_decompress_lzss           
+00000855  _c_int00                       
+000008a9  C$$EXIT                        
+000008ad  abort                          
+000008b5  exit                           
+000008fd  ButtonsInit                    
+00000949  copy_in                        
+000009dd  WatchdogIntHandler             
+00000a41  _args_main                     
+00000a59  _register_unlock               
+00000a5f  _register_lock                 
+00000a67  _nop                           
+00000a6d  __TI_decompress_none           
+00000a89  __TI_zero_init                 
+00000a95  ResetISR                       
+00000a9b  _system_pre_init               
+00000a9f  __mpu_init                     
+00000aa1  _system_post_cinit             
+00000d0c  __TI_Handler_Table_Base        
+00000d18  __TI_Handler_Table_Limit       
+00000d20  __TI_CINIT_Base                
+00000d30  __TI_CINIT_Limit               
+20000000  __stack                        
+20000200  __STACK_END                    
+20000200  __STACK_TOP                    
+20000200  __TI_cleanup_ptr               
+20000204  __TI_dtors_ptr                 
+20000208  __TI_enable_exit_profile_output
+2000020c  _lock                          
+20000210  _unlock                        
+20000214  main_func_sp                   
+2000021b  g_bFeedWatchdog                
+2000021c  g_ui32SysClock                 
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
 
-[54 symbols]
+[60 symbols]

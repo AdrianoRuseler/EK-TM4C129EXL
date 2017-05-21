@@ -2,7 +2,7 @@
 //
 // usb_dev_keyboard.c - Main routines for the keyboard example.
 //
-// Copyright (c) 2013-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2013-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.2.111 of the EK-TM4C129EXL Firmware Package.
+// This is part of revision 2.1.4.178 of the EK-TM4C129EXL Firmware Package.
 //
 //*****************************************************************************
 
@@ -514,6 +514,7 @@ main(void)
     uint_fast32_t ui32LastTickCount;
     bool bLastSuspend;
     uint32_t ui32SysClock;
+    uint32_t ui32PLLRate;
 
     //
     // Run from the PLL at 120 MHz.
@@ -553,6 +554,14 @@ main(void)
     // Initialize the USB stack for device mode.
     //
     USBStackModeSet(0, eUSBModeDevice, 0);
+
+    //
+    // Tell the USB library the CPU clock and the PLL frequency.  This is a
+    // new requirement for TM4C129 devices.
+    //
+    SysCtlVCOGet(SYSCTL_XTAL_25MHZ, &ui32PLLRate);
+    USBDCDFeatureSet(0, USBLIB_FEATURE_CPUCLK, &ui32SysClock);
+    USBDCDFeatureSet(0, USBLIB_FEATURE_USBPLL, &ui32PLLRate);
 
     //
     // Pass our device information to the USB HID device class driver,

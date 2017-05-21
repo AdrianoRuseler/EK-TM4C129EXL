@@ -2,7 +2,7 @@
 //
 // usb_dev_cserial.c - Main routines for the USB CDC composite serial example.
 //
-// Copyright (c) 2010-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2010-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.2.111 of the EK-TM4C129EXL Firmware Package.
+// This is part of revision 2.1.4.178 of the EK-TM4C129EXL Firmware Package.
 //
 //****************************************************************************
 
@@ -1506,6 +1506,7 @@ main(void)
     uint32_t ui32RxCount;
     uint32_t *pui32Data;
     int32_t i32Status;
+    uint32_t ui32PLLRate;
 
     //
     // Run from the PLL at 120 MHz.
@@ -1584,6 +1585,14 @@ main(void)
     g_sCompDevice.psDevices[1].pvInstance =
         USBDCDCCompositeInit(0, &g_psCDCDevice[1], &g_psCompEntries[1]);
 
+    //
+    // Tell the USB library the CPU clock and the PLL frequency.  This is a
+    // new requirement for TM4C129 devices.
+    //
+    SysCtlVCOGet(SYSCTL_XTAL_25MHZ, &ui32PLLRate);
+    USBDCDFeatureSet(0, USBLIB_FEATURE_CPUCLK, &g_ui32SysClock);
+    USBDCDFeatureSet(0, USBLIB_FEATURE_USBPLL, &ui32PLLRate);
+    
     //
     // Pass the device information to the USB library and place the device
     // on the bus.

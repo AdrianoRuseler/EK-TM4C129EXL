@@ -2,7 +2,7 @@
 //
 // bl_usb.c - Functions to transfer data via the USB port.
 //
-// Copyright (c) 2009-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2009-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.2.111 of the Tiva Firmware Development Package.
+// This is part of revision 2.1.4.178 of the Tiva Firmware Development Package.
 //
 //*****************************************************************************
 
@@ -2112,9 +2112,11 @@ ConfigureUSB(void)
 
     //
     // Program the PLLFREQ0 and PLLFREQ1 registers for 480MHz
-    // VCO Clock from the PLL. Enable the PLL Power Up.
+    // VCO Clock from the PLL and output clock of 240MHz using the Q divider.
+    // Enable the PLL Power Up.
     //
-    HWREG(SYSCTL_PLLFREQ1) = (4 << SYSCTL_PLLFREQ1_N_S);
+    HWREG(SYSCTL_PLLFREQ1) = (1 << SYSCTL_PLLFREQ1_Q_S |
+                              4 << SYSCTL_PLLFREQ1_N_S);
     HWREG(SYSCTL_PLLFREQ0) = (SYSCTL_PLLFREQ0_PLLPWR |
                               (96 << SYSCTL_PLLFREQ0_MINT_S));
 
@@ -2140,7 +2142,7 @@ ConfigureUSB(void)
     //
     HWREG(SYSCTL_RSCLKCFG) |= (SYSCTL_RSCLKCFG_MEMTIMU |
                                SYSCTL_RSCLKCFG_USEPLL |
-                               0x3);
+                               0x1);
 #else
     //
     // Enable the main oscillator.

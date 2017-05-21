@@ -2,7 +2,7 @@
 //
 // enet_weather.c - Sample Weather application using lwIP.
 //
-// Copyright (c) 2014-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2014-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 //
 //*****************************************************************************

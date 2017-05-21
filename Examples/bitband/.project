@@ -34,7 +34,7 @@
 	<variableList>
 		<variable>
 			<name>ORIGINAL_PROJECT_ROOT</name>
-			<value>file:/C:/ti/TivaWare_C_Series-2.1.2.111/examples/boards/ek-tm4c129exl/bitband/ccs</value>
+			<value>file:/C:/ti/TivaWare_C_Series-2.1.4.178/examples/boards/ek-tm4c129exl/bitband/ccs</value>
 		</variable>
 		<variable>
 			<name>SW_ROOT</name>

@@ -2,7 +2,7 @@
 //
 // buttons.c - Evaluation board driver for push buttons.
 //
-// Copyright (c) 2013-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2013-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.2.111 of the EK-TM4C129EXL Firmware Package.
+// This is part of revision 2.1.4.178 of the EK-TM4C129EXL Firmware Package.
 //
 //*****************************************************************************
 
@@ -67,8 +67,8 @@ static uint8_t g_ui8ButtonStates = ALL_BUTTONS;
 //! was called.
 //!
 //! In order for button debouncing to work properly, this function should be
-//! caled at a regular interval, even if the state of the buttons is not needed
-//! that often.
+//! called at a regular interval, even if the state of the buttons is not
+//! needed that often.
 //!
 //! If button debouncing is not required, the the caller can pass a pointer
 //! for the \e pui8RawState parameter in order to get the raw state of the

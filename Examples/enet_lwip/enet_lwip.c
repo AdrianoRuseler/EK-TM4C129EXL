@@ -2,7 +2,7 @@
 //
 // enet_lwip.c - Sample WebServer Application using lwIP.
 //
-// Copyright (c) 2013-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2013-2017 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.2.111 of the EK-TM4C129EXL Firmware Package.
+// This is part of revision 2.1.4.178 of the EK-TM4C129EXL Firmware Package.
 //
 //*****************************************************************************
 
@@ -94,6 +94,14 @@ uint32_t g_ui32SysClock;
 
 //*****************************************************************************
 //
+// Volatile global flag to manage LED blinking, since it is used in interrupt
+// and main application.  The LED blinks at the rate of SYSTICKHZ.
+//
+//*****************************************************************************
+volatile bool g_bLED;
+
+//*****************************************************************************
+//
 // The error routine that is called if the driver library encounters an error.
 //
 //*****************************************************************************
@@ -134,7 +142,7 @@ DisplayIPAddress(uint32_t ui32Addr)
 void
 lwIPHostTimerHandler(void)
 {
-    uint32_t ui32Idx, ui32NewIPAddress;
+    uint32_t ui32NewIPAddress;
 
     //
     // Get the current IP address.
@@ -178,11 +186,6 @@ lwIPHostTimerHandler(void)
         // Save the new IP address.
         //
         g_ui32IPAddress = ui32NewIPAddress;
-
-        //
-        // Turn GPIO off.
-        //
-        MAP_GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1, ~GPIO_PIN_1);
     }
 
     //
@@ -191,21 +194,8 @@ lwIPHostTimerHandler(void)
     if((ui32NewIPAddress == 0) || (ui32NewIPAddress == 0xffffffff))
     {
         //
-        // Loop through the LED animation.
+        // Do nothing and keep waiting.
         //
-
-        for(ui32Idx = 1; ui32Idx < 17; ui32Idx++)
-        {
-
-            //
-            // Toggle the GPIO
-            //
-            MAP_GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1,
-                    (MAP_GPIOPinRead(GPIO_PORTN_BASE, GPIO_PIN_1) ^
-                     GPIO_PIN_1));
-
-            SysCtlDelay(g_ui32SysClock/(ui32Idx << 1));
-        }
     }
 }
 
@@ -221,6 +211,12 @@ SysTickIntHandler(void)
     // Call the lwIP timer handler.
     //
     lwIPTimer(SYSTICKMS);
+
+    //
+    // Tell the application to change the state of the LED (in other words
+    // blink).
+    //
+    g_bLED = true;
 }
 
 //*****************************************************************************
@@ -347,9 +343,29 @@ main(void)
     MAP_IntPrioritySet(FAULT_SYSTICK, SYSTICK_INT_PRIORITY);
 
     //
-    // Loop forever.  All the work is done in interrupt handlers.
+    // Loop forever, processing the LED blinking.  All the work is done in
+    // interrupt handlers.
     //
     while(1)
     {
+        //
+        // Wait till the SysTick Interrupt indicates to change the state of the
+        // LED.
+        //
+        while(g_bLED == false)
+        {
+        }
+
+        //
+        // Clear the flag.
+        //
+        g_bLED = false;
+
+        //
+        // Toggle the LED.
+        //
+        MAP_GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1,
+                         (MAP_GPIOPinRead(GPIO_PORTN_BASE, GPIO_PIN_1) ^
+                          GPIO_PIN_1));
     }
 }

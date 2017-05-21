@@ -1,33 +1,33 @@
 ******************************************************************************
-                  TI ARM Linker PC v5.2.5                      
+                  TI ARM Linker PC v16.9.0                     
 ******************************************************************************
->> Linked Fri Jul 22 12:43:34 2016
+>> Linked Sun May 21 09:59:45 2017
 
 OUTPUT FILE NAME:   <aes_example.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 000014f5
+ENTRY POINT SYMBOL: "_c_int00"  address: 000014f1
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00100000  00001aac  000fe554  R  X
-  SRAM                  20000000   00040000  000008c6  0003f73a  RW X
+  FLASH                 00000000   00100000  00001a96  000fe56a  R  X
+  SRAM                  20000000   00040000  000008ca  0003f736  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00001ab0   00001ab0    r-x
+00000000    00000000    00001a98   00001a98    r-x
   00000000    00000000    00000200   00000200    r-- .intvecs
-  00000200    00000200    0000157e   0000157e    r-x .text
-  00001780    00001780    00000296   00000296    r-- .const
-  00001a18    00001a18    00000098   00000098    r-- .cinit
-20000000    20000000    000008c8   00000000    rw-
+  00000200    00000200    0000158e   0000158e    r-x .text
+  00001790    00001790    00000280   00000280    r-- .const
+  00001a10    00001a10    00000088   00000088    r-- .cinit
+20000000    20000000    000008cc   00000000    rw-
   20000000    20000000    0000043e   00000000    rw- .bss
   20000440    20000440    00000400   00000000    rw- .stack
-  20000840    20000840    00000088   00000000    rw- .data
+  20000840    20000840    0000008c   00000000    rw- .data
 
 
 SECTION ALLOCATION MAP
@@ -38,65 +38,67 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    00000200     
                   00000000    00000200     startup_ccs.obj (.intvecs)
 
-.text      0    00000200    0000157e     
+.text      0    00000200    0000158e     
                   00000200    000002bc     aes_example.obj (.text:Cmd_algo)
                   000004bc    000001f6     aes_example.obj (.text:PrintHelpCmdAlgo)
                   000006b2    00000002     startup_ccs.obj (.text:FaultISR)
                   000006b4    000001ea     uartstdio.obj (.text:UARTvprintf)
                   0000089e    00000002     startup_ccs.obj (.text:IntDefaultHandler)
-                  000008a0    0000016c     aes_example.obj (.text:Cmd_process)
-                  00000a0c    00000148     aes_example.obj (.text:Cmd_data)
-                  00000b54    0000012c     aes_example.obj (.text:main)
-                  00000c80    00000120     aes_example.obj (.text:Cmd_key)
-                  00000da0    000000ec     aes_example.obj (.text:PrintHelpCmdData)
-                  00000e8c    000000e7     aes_example.obj (.text:PrintHelpCmdKey)
-                  00000f73    00000001     --HOLE-- [fill = 0]
-                  00000f74    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
-                  00001010    0000009c     ustdlib.obj (.text:ustrtoul)
-                  000010ac    00000098     uartstdio.obj (.text:UARTgets)
-                  00001144    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
-                  000011be    00000072     aes_example.obj (.text:CharToHex)
-                  00001230    0000006c     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
-                  0000129c    0000006a                                   : copy_decompress_rle.obj (.text)
-                  00001306    00000002     startup_ccs.obj (.text:NmiSR)
-                  00001308    00000068     aes_example.obj (.text:InitConsole)
-                  00001370    00000064     cmdline.obj (.text:CmdLineProcess)
-                  000013d4    00000064     aes_example.obj (.text:Cmd_help)
-                  00001438    00000060     uartstdio.obj (.text:UARTStdioConfig)
-                  00001498    0000005c     aes_example.obj (.text:Cmd_reset)
-                  000014f4    00000050     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
-                  00001544    0000004c                                   : cpy_tbl.obj (.text)
-                  00001590    00000048     uartstdio.obj (.text:UARTwrite)
-                  000015d8    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.text)
-                  0000161c    00000040                                   : u_divt2.obj (.text)
-                  0000165c    00000036     ustdlib.obj (.text:ustrncmp)
-                  00001692    0000002a     ustdlib.obj (.text:ustrncpy)
-                  000016bc    0000001e     rtsv7M4_T_le_v4SPD16_eabi.lib : strcat.obj (.text)
-                  000016da    0000001a     uartstdio.obj (.text:UARTprintf)
-                  000016f4    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
-                  0000170c    00000018                                   : strcmp.obj (.text)
-                  00001724    00000014                                   : _lock.obj (.text)
-                  00001738    00000012     ustdlib.obj (.text:ustrlen)
-                  0000174a    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
-                  00001758    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
-                  00001764    00000008     ustdlib.obj (.text:ustrcmp)
-                  0000176c    00000006     startup_ccs.obj (.text:ResetISR)
-                  00001772    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
-                  00001778    00000004                                   : pre_init.obj (.text)
-                  0000177c    00000002                                   : i_div0.obj (.text)
+                  000008a0    00000168     aes_example.obj (.text:Cmd_process)
+                  00000a08    00000148     aes_example.obj (.text:Cmd_data)
+                  00000b50    0000012c     aes_example.obj (.text:main)
+                  00000c7c    00000120     aes_example.obj (.text:Cmd_key)
+                  00000d9c    000000ec     aes_example.obj (.text:PrintHelpCmdData)
+                  00000e88    000000e7     aes_example.obj (.text:PrintHelpCmdKey)
+                  00000f6f    00000001     --HOLE-- [fill = 0]
+                  00000f70    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  0000100c    0000009c     ustdlib.obj (.text:ustrtoul)
+                  000010a8    00000098     uartstdio.obj (.text:UARTgets)
+                  00001140    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
+                  000011ba    00000072     aes_example.obj (.text:CharToHex)
+                  0000122c    00000070     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
+                  0000129c    00000068     aes_example.obj (.text:InitConsole)
+                  00001304    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  0000136c    00000064     cmdline.obj (.text:CmdLineProcess)
+                  000013d0    00000064     aes_example.obj (.text:Cmd_help)
+                  00001434    00000060     uartstdio.obj (.text:UARTStdioConfig)
+                  00001494    0000005c     aes_example.obj (.text:Cmd_reset)
+                  000014f0    00000054     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
+                  00001544    00000054                                   : exit.obj (.text)
+                  00001598    0000004c                                   : cpy_tbl.obj (.text)
+                  000015e4    00000048     uartstdio.obj (.text:UARTwrite)
+                  0000162c    00000040     rtsv7M4_T_le_v4SPD16_eabi.lib : u_divt2.obj (.text)
+                  0000166c    00000036     ustdlib.obj (.text:ustrncmp)
+                  000016a2    0000002a     ustdlib.obj (.text:ustrncpy)
+                  000016cc    0000001e     rtsv7M4_T_le_v4SPD16_eabi.lib : strcat.obj (.text)
+                  000016ea    0000001a     uartstdio.obj (.text:UARTprintf)
+                  00001704    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  0000171c    00000018                                   : strcmp.obj (.text)
+                  00001734    00000014                                   : _lock.obj (.text)
+                  00001748    00000012     ustdlib.obj (.text:ustrlen)
+                  0000175a    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  00001768    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
+                  00001774    00000008     ustdlib.obj (.text:ustrcmp)
+                  0000177c    00000006     startup_ccs.obj (.text:ResetISR)
+                  00001782    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
+                  00001786    00000002     startup_ccs.obj (.text:NmiSR)
+                  00001788    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : i_div0.obj (.text)
+                  0000178a    00000002                                   : mpu_init.obj (.text)
+                  0000178c    00000002                                   : startup.obj (.text)
 
-.const     0    00001780    00000296     
-                  00001780    00000266     aes_example.obj (.const:.string)
-                  000019e6    00000002     --HOLE-- [fill = 0]
-                  000019e8    0000001c     uartstdio.obj (.const)
-                  00001a04    00000012     uartstdio.obj (.const:.string)
+.const     0    00001790    00000280     
+                  00001790    00000266     aes_example.obj (.const:.string)
+                  000019f6    00000002     --HOLE-- [fill = 0]
+                  000019f8    0000000c     uartstdio.obj (.const:g_ui32UARTBase)
+                  00001a04    0000000c     uartstdio.obj (.const:g_ui32UARTPeriph)
 
-.cinit     0    00001a18    00000098     
-                  00001a18    00000070     (.cinit..data.load) [load image, compression = rle]
-                  00001a88    0000000c     (__TI_handler_table)
-                  00001a94    00000004     --HOLE-- [fill = 0]
-                  00001a98    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00001aa0    00000010     (__TI_cinit_table)
+.cinit     0    00001a10    00000088     
+                  00001a10    0000005e     (.cinit..data.load) [load image, compression = lzss]
+                  00001a6e    00000002     --HOLE-- [fill = 0]
+                  00001a70    0000000c     (__TI_handler_table)
+                  00001a7c    00000004     --HOLE-- [fill = 0]
+                  00001a80    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00001a88    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -107,210 +109,261 @@ section   page    origin      length       input sections
                   20000200    00000100     aes_example.obj (.bss:g_pcCmdBuf)
                   20000300    00000100     aes_example.obj (.bss:g_pui8AESEncryptDataOut)
                   20000400    00000024     cmdline.obj (.bss:g_ppcArgv)
-                  20000424    00000010     (.common:g_pui8AESIVData)
-                  20000434    00000004     (.common:g_ui32KeySize)
+                  20000424    00000010     aes_example.obj (.bss:g_pui8AESIVData)
+                  20000434    00000004     aes_example.obj (.bss)
                   20000438    00000004     (.common:g_ui32StringLength)
                   2000043c    00000001     (.common:g_bIVRequired)
                   2000043d    00000001     (.common:g_bProcessDirection)
 
-.TI.noinit 
-*          0    20000000    00000000     UNINITIALIZED
-
 .stack     0    20000440    00000400     UNINITIALIZED
                   20000440    00000400     --HOLE--
 
-.data      0    20000840    00000088     UNINITIALIZED
+.data      0    20000840    0000008c     UNINITIALIZED
                   20000840    0000006c     aes_example.obj (.data:g_psCmdTable)
-                  200008ac    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
-                  200008b4    00000008                                   : exit.obj (.data)
-                  200008bc    00000005     uartstdio.obj (.data)
-                  200008c1    00000003     --HOLE--
-                  200008c4    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
+                  200008ac    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
+                  200008b8    00000008                                   : _lock.obj (.data:$O1$$)
+                  200008c0    00000005     uartstdio.obj (.data)
+                  200008c5    00000003     --HOLE--
+                  200008c8    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
 
-.TI.persistent 
-*          0    20000840    00000000     UNINITIALIZED
+MODULE SUMMARY
+
+       Module                     code   ro data   rw data
+       ------                     ----   -------   -------
+    .\
+       aes_example.obj            3355   614       1158   
+       startup_ccs.obj            12     512       0      
+    +--+--------------------------+------+---------+---------+
+       Total:                     3367   1126      1158   
+                                                          
+    .\utils\
+       uartstdio.obj              836    24        5      
+       ustdlib.obj                278    0         0      
+       cmdline.obj                100    0         36     
+    +--+--------------------------+------+---------+---------+
+       Total:                     1214   24        41     
+                                                          
+    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.0.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.obj              156    0         0      
+       memset_t2.obj              122    0         0      
+       autoinit.obj               112    0         0      
+       copy_decompress_lzss.obj   104    0         0      
+       exit.obj                   84     0         12     
+       boot.obj                   84     0         0      
+       cpy_tbl.obj                76     0         0      
+       u_divt2.obj                64     0         0      
+       strcat.obj                 30     0         0      
+       _lock.obj                  20     0         8      
+       args_main.obj              24     0         0      
+       strcmp.obj                 24     0         0      
+       copy_decompress_none.obj   14     0         0      
+       copy_zero_init.obj         12     0         0      
+       pre_init.obj               4      0         0      
+       stkdepth_vars.obj          0      0         4      
+       i_div0.obj                 2      0         0      
+       mpu_init.obj               2      0         0      
+       startup.obj                2      0         0      
+    +--+--------------------------+------+---------+---------+
+       Total:                     936    0         24     
+                                                          
+       Stack:                     0      0         1024   
+       Linker Generated:          0      130       0      
+    +--+--------------------------+------+---------+---------+
+       Grand Total:               5517   1280      2247   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00001aa0 records: 2, size/record: 8, table size: 16
-	.data: load addr=00001a18, load size=00000070 bytes, run addr=20000840, run size=00000088 bytes, compression=rle
-	.bss: load addr=00001a98, load size=00000008 bytes, run addr=20000000, run size=0000043e bytes, compression=zero_init
+__TI_cinit_table @ 00001a88 records: 2, size/record: 8, table size: 16
+	.data: load addr=00001a10, load size=0000005e bytes, run addr=20000840, run size=0000008c bytes, compression=lzss
+	.bss: load addr=00001a80, load size=00000008 bytes, run addr=20000000, run size=0000043e bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00001a88 records: 3, size/record: 4, table size: 12
-	index: 0, handler: __TI_decompress_rle24
+__TI_handler_table @ 00001a70 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
-address   name                    
--------   ----                    
-000015d9  C$$EXIT                 
-000011bf  CharToHex               
-00001371  CmdLineProcess          
-00000201  Cmd_algo                
-00000a0d  Cmd_data                
-000013d5  Cmd_help                
-00000c81  Cmd_key                 
-000008a1  Cmd_process             
-00001499  Cmd_reset               
-00001309  InitConsole             
-000004bd  PrintHelpCmdAlgo        
-00000da1  PrintHelpCmdData        
-00000e8d  PrintHelpCmdKey         
-0000176d  ResetISR                
-UNDEFED   SHT$$INIT_ARRAY$$Base   
-UNDEFED   SHT$$INIT_ARRAY$$Limit  
-00001439  UARTStdioConfig         
-000010ad  UARTgets                
-000016db  UARTprintf              
-000006b5  UARTvprintf             
-00001591  UARTwrite               
-20000840  __STACK_END             
-00000400  __STACK_SIZE            
-20000840  __STACK_TOP             
-00001aa0  __TI_CINIT_Base         
-00001ab0  __TI_CINIT_Limit        
-00001a88  __TI_Handler_Table_Base 
-00001a94  __TI_Handler_Table_Limit
-00001231  __TI_auto_init          
-200008b4  __TI_cleanup_ptr        
-0000174b  __TI_decompress_none    
-00001773  __TI_decompress_rle24   
-200008b8  __TI_dtors_ptr          
-00000000  __TI_static_base__      
-00001759  __TI_zero_init          
-0000177d  __aeabi_idiv0           
-00001145  __aeabi_memclr          
-00001145  __aeabi_memclr4         
-00001145  __aeabi_memclr8         
-00000f75  __aeabi_memcpy          
-00000f75  __aeabi_memcpy4         
-00000f75  __aeabi_memcpy8         
-00001147  __aeabi_memset          
-00001147  __aeabi_memset4         
-00001147  __aeabi_memset8         
-0000161d  __aeabi_uidiv           
-0000161d  __aeabi_uidivmod        
-ffffffff  __binit__               
-ffffffff  __c_args__              
-20000440  __stack                 
-000016f5  _args_main              
-000014f5  _c_int00                
-200008ac  _lock                   
-00001733  _nop                    
-0000172b  _register_lock          
-00001725  _register_unlock        
-00001779  _system_pre_init        
-200008b0  _unlock                 
-000015dd  abort                   
-ffffffff  binit                   
-00001545  copy_in                 
-000015e5  exit                    
-2000043c  g_bIVRequired           
-2000043d  g_bProcessDirection     
-00000000  g_pfnVectors            
-20000840  g_psCmdTable            
-20000438  g_ui32StringLength      
-00000b55  main                    
-200008c4  main_func_sp            
-00000f75  memcpy                  
-0000114d  memset                  
-000016bd  strcat                  
-0000170d  strcmp                  
-00001765  ustrcmp                 
-00001739  ustrlen                 
-0000165d  ustrncmp                
-00001693  ustrncpy                
-00001011  ustrtoul                
+address   name                           
+-------   ----                           
+00001545  C$$EXIT                        
+000011bb  CharToHex                      
+0000136d  CmdLineProcess                 
+00000201  Cmd_algo                       
+00000a09  Cmd_data                       
+000013d1  Cmd_help                       
+00000c7d  Cmd_key                        
+000008a1  Cmd_process                    
+00001495  Cmd_reset                      
+0000129d  InitConsole                    
+000004bd  PrintHelpCmdAlgo               
+00000d9d  PrintHelpCmdData               
+00000e89  PrintHelpCmdKey                
+0000177d  ResetISR                       
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+00001435  UARTStdioConfig                
+000010a9  UARTgets                       
+000016eb  UARTprintf                     
+000006b5  UARTvprintf                    
+000015e5  UARTwrite                      
+20000840  __STACK_END                    
+00000400  __STACK_SIZE                   
+20000840  __STACK_TOP                    
+00001a88  __TI_CINIT_Base                
+00001a98  __TI_CINIT_Limit               
+00001a70  __TI_Handler_Table_Base        
+00001a7c  __TI_Handler_Table_Limit       
+0000122d  __TI_auto_init                 
+200008ac  __TI_cleanup_ptr               
+00001305  __TI_decompress_lzss           
+0000175b  __TI_decompress_none           
+200008b0  __TI_dtors_ptr                 
+200008b4  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00000000  __TI_static_base__             
+00001769  __TI_zero_init                 
+00001789  __aeabi_idiv0                  
+00001141  __aeabi_memclr                 
+00001141  __aeabi_memclr4                
+00001141  __aeabi_memclr8                
+00000f71  __aeabi_memcpy                 
+00000f71  __aeabi_memcpy4                
+00000f71  __aeabi_memcpy8                
+00001143  __aeabi_memset                 
+00001143  __aeabi_memset4                
+00001143  __aeabi_memset8                
+0000162d  __aeabi_uidiv                  
+0000162d  __aeabi_uidivmod               
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+0000178b  __mpu_init                     
+20000440  __stack                        
+00001705  _args_main                     
+000014f1  _c_int00                       
+200008b8  _lock                          
+00001743  _nop                           
+0000173b  _register_lock                 
+00001735  _register_unlock               
+0000178d  _system_post_cinit             
+00001783  _system_pre_init               
+200008bc  _unlock                        
+00001549  abort                          
+ffffffff  binit                          
+00001599  copy_in                        
+00001551  exit                           
+2000043c  g_bIVRequired                  
+2000043d  g_bProcessDirection            
+00000000  g_pfnVectors                   
+20000840  g_psCmdTable                   
+20000438  g_ui32StringLength             
+00000b51  main                           
+200008c8  main_func_sp                   
+00000f71  memcpy                         
+00001149  memset                         
+000016cd  strcat                         
+0000171d  strcmp                         
+00001775  ustrcmp                        
+00001749  ustrlen                        
+0000166d  ustrncmp                       
+000016a3  ustrncpy                       
+0000100d  ustrtoul                       
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
-address   name                    
--------   ----                    
-00000000  __TI_static_base__      
-00000000  g_pfnVectors            
-00000201  Cmd_algo                
-00000400  __STACK_SIZE            
-000004bd  PrintHelpCmdAlgo        
-000006b5  UARTvprintf             
-000008a1  Cmd_process             
-00000a0d  Cmd_data                
-00000b55  main                    
-00000c81  Cmd_key                 
-00000da1  PrintHelpCmdData        
-00000e8d  PrintHelpCmdKey         
-00000f75  __aeabi_memcpy          
-00000f75  __aeabi_memcpy4         
-00000f75  __aeabi_memcpy8         
-00000f75  memcpy                  
-00001011  ustrtoul                
-000010ad  UARTgets                
-00001145  __aeabi_memclr          
-00001145  __aeabi_memclr4         
-00001145  __aeabi_memclr8         
-00001147  __aeabi_memset          
-00001147  __aeabi_memset4         
-00001147  __aeabi_memset8         
-0000114d  memset                  
-000011bf  CharToHex               
-00001231  __TI_auto_init          
-00001309  InitConsole             
-00001371  CmdLineProcess          
-000013d5  Cmd_help                
-00001439  UARTStdioConfig         
-00001499  Cmd_reset               
-000014f5  _c_int00                
-00001545  copy_in                 
-00001591  UARTwrite               
-000015d9  C$$EXIT                 
-000015dd  abort                   
-000015e5  exit                    
-0000161d  __aeabi_uidiv           
-0000161d  __aeabi_uidivmod        
-0000165d  ustrncmp                
-00001693  ustrncpy                
-000016bd  strcat                  
-000016db  UARTprintf              
-000016f5  _args_main              
-0000170d  strcmp                  
-00001725  _register_unlock        
-0000172b  _register_lock          
-00001733  _nop                    
-00001739  ustrlen                 
-0000174b  __TI_decompress_none    
-00001759  __TI_zero_init          
-00001765  ustrcmp                 
-0000176d  ResetISR                
-00001773  __TI_decompress_rle24   
-00001779  _system_pre_init        
-0000177d  __aeabi_idiv0           
-00001a88  __TI_Handler_Table_Base 
-00001a94  __TI_Handler_Table_Limit
-00001aa0  __TI_CINIT_Base         
-00001ab0  __TI_CINIT_Limit        
-20000438  g_ui32StringLength      
-2000043c  g_bIVRequired           
-2000043d  g_bProcessDirection     
-20000440  __stack                 
-20000840  __STACK_END             
-20000840  __STACK_TOP             
-20000840  g_psCmdTable            
-200008ac  _lock                   
-200008b0  _unlock                 
-200008b4  __TI_cleanup_ptr        
-200008b8  __TI_dtors_ptr          
-200008c4  main_func_sp            
-ffffffff  __binit__               
-ffffffff  __c_args__              
-ffffffff  binit                   
-UNDEFED   SHT$$INIT_ARRAY$$Base   
-UNDEFED   SHT$$INIT_ARRAY$$Limit  
+address   name                           
+-------   ----                           
+00000000  __TI_static_base__             
+00000000  g_pfnVectors                   
+00000201  Cmd_algo                       
+00000400  __STACK_SIZE                   
+000004bd  PrintHelpCmdAlgo               
+000006b5  UARTvprintf                    
+000008a1  Cmd_process                    
+00000a09  Cmd_data                       
+00000b51  main                           
+00000c7d  Cmd_key                        
+00000d9d  PrintHelpCmdData               
+00000e89  PrintHelpCmdKey                
+00000f71  __aeabi_memcpy                 
+00000f71  __aeabi_memcpy4                
+00000f71  __aeabi_memcpy8                
+00000f71  memcpy                         
+0000100d  ustrtoul                       
+000010a9  UARTgets                       
+00001141  __aeabi_memclr                 
+00001141  __aeabi_memclr4                
+00001141  __aeabi_memclr8                
+00001143  __aeabi_memset                 
+00001143  __aeabi_memset4                
+00001143  __aeabi_memset8                
+00001149  memset                         
+000011bb  CharToHex                      
+0000122d  __TI_auto_init                 
+0000129d  InitConsole                    
+00001305  __TI_decompress_lzss           
+0000136d  CmdLineProcess                 
+000013d1  Cmd_help                       
+00001435  UARTStdioConfig                
+00001495  Cmd_reset                      
+000014f1  _c_int00                       
+00001545  C$$EXIT                        
+00001549  abort                          
+00001551  exit                           
+00001599  copy_in                        
+000015e5  UARTwrite                      
+0000162d  __aeabi_uidiv                  
+0000162d  __aeabi_uidivmod               
+0000166d  ustrncmp                       
+000016a3  ustrncpy                       
+000016cd  strcat                         
+000016eb  UARTprintf                     
+00001705  _args_main                     
+0000171d  strcmp                         
+00001735  _register_unlock               
+0000173b  _register_lock                 
+00001743  _nop                           
+00001749  ustrlen                        
+0000175b  __TI_decompress_none           
+00001769  __TI_zero_init                 
+00001775  ustrcmp                        
+0000177d  ResetISR                       
+00001783  _system_pre_init               
+00001789  __aeabi_idiv0                  
+0000178b  __mpu_init                     
+0000178d  _system_post_cinit             
+00001a70  __TI_Handler_Table_Base        
+00001a7c  __TI_Handler_Table_Limit       
+00001a88  __TI_CINIT_Base                
+00001a98  __TI_CINIT_Limit               
+20000438  g_ui32StringLength             
+2000043c  g_bIVRequired                  
+2000043d  g_bProcessDirection            
+20000440  __stack                        
+20000840  __STACK_END                    
+20000840  __STACK_TOP                    
+20000840  g_psCmdTable                   
+200008ac  __TI_cleanup_ptr               
+200008b0  __TI_dtors_ptr                 
+200008b4  __TI_enable_exit_profile_output
+200008b8  _lock                          
+200008bc  _unlock                        
+200008c8  main_func_sp                   
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
 
-[78 symbols]
+[84 symbols]

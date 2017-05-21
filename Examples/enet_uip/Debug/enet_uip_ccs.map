@@ -1,33 +1,33 @@
 ******************************************************************************
-                  TI ARM Linker PC v5.2.5                      
+                  TI ARM Linker PC v16.9.0                     
 ******************************************************************************
->> Linked Fri Jul 22 12:45:37 2016
+>> Linked Sun May 21 10:02:30 2017
 
 OUTPUT FILE NAME:   <enet_uip.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 00002a89
+ENTRY POINT SYMBOL: "_c_int00"  address: 00002a41
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00100000  00003708  000fc8f8  R  X
-  SRAM                  20000000   00040000  00001797  0003e869  RW X
+  FLASH                 00000000   00100000  000037d4  000fc82c  R  X
+  SRAM                  20000000   00040000  0000179b  0003e865  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00003708   00003708    r-x
+00000000    00000000    000037d8   000037d8    r-x
   00000000    00000000    00000200   00000200    r-- .intvecs
-  00000200    00000200    00002eac   00002eac    r-x .text
-  000030ac    000030ac    00000614   00000614    r-- .const
-  000036c0    000036c0    00000048   00000048    r-- .cinit
-20000000    20000000    00001798   00000000    rw-
+  00000200    00000200    00002f06   00002f06    r-x .text
+  00003108    00003108    0000068e   0000068e    r-- .const
+  00003798    00003798    00000040   00000040    r-- .cinit
+20000000    20000000    0000179c   00000000    rw-
   20000000    20000000    00001567   00000000    rw- .bss
   20001568    20001568    00000200   00000000    rw- .stack
-  20001768    20001768    00000030   00000000    rw- .data
+  20001768    20001768    00000034   00000000    rw- .data
 
 
 SECTION ALLOCATION MAP
@@ -38,456 +38,525 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    00000200     
                   00000000    00000200     startup_ccs.obj (.intvecs)
 
-.text      0    00000200    00002eac     
-                  00000200    00000d54     uip.obj (.text:uip_process)
-                  00000f54    00000430     enet_uip.obj (.text:main)
-                  00001384    0000024d     ustdlib.obj (.text:uvsnprintf)
-                  000015d1    00000001     --HOLE-- [fill = 0]
-                  000015d2    00000002     startup_ccs.obj (.text:FaultISR)
-                  000015d4    00000214     pinout.obj (.text:PinoutSet)
-                  000017e8    00000204     driverlib.lib : sysctl.obj (.text:SysCtlClockFreqSet)
-                  000019ec    000001ea     uartstdio.obj (.text:UARTvprintf)
-                  00001bd6    00000002     startup_ccs.obj (.text:IntDefaultHandler)
-                  00001bd8    00000158     uip_arp.obj (.text:uip_arp_out)
-                  00001d30    00000132     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
-                  00001e62    00000002     startup_ccs.obj (.text:NmiSR)
-                  00001e64    000000ec     dhcpc.obj (.text:handle_dhcp)
-                  00001f50    000000d8     httpd.obj (.text:httpd_appcall)
-                  00002028    000000cc     uip_arp.obj (.text:uip_arp_arpin)
-                  000020f4    000000cc     uip_arp.obj (.text:uip_arp_update)
-                  000021c0    000000a8     enet_uip.obj (.text:InitDescriptors)
-                  00002268    000000a0     dhcpc.obj (.text:create_msg)
-                  00002308    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
-                  000023a4    00000094     uip.obj (.text:uip_udp_new)
-                  00002438    00000088     enet_uip.obj (.text:PacketTransmit)
-                  000024c0    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
-                  0000253a    00000002                                   : i_div0.obj (.text)
-                  0000253c    00000078     driverlib.lib : emac.obj (.text:EMACInit)
-                  000025b4    0000006c     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
-                  00002620    0000006a                                   : copy_decompress_rle.obj (.text)
-                  0000268a    00000002     --HOLE-- [fill = 0]
-                  0000268c    00000068     enet_uip.obj (.text:EthernetIntHandler)
-                  000026f4    00000068     enet_uip.obj (.text:PacketReceive)
-                  0000275c    00000068     dhcpc.obj (.text:parse_options)
-                  000027c4    00000060     uartstdio.obj (.text:UARTStdioConfig)
-                  00002824    0000005c     dhcpc.obj (.text:parse_msg)
-                  00002880    0000005c     uip.obj (.text:uip_init)
-                  000028dc    00000058     driverlib.lib : emac.obj (.text:EMACPHYConfigSet)
-                  00002934    00000058     httpd.obj (.text:httpd_inc_page_count)
-                  0000298c    00000058     uip.obj (.text:uip_add32)
-                  000029e4    00000054     uip_arp.obj (.text:uip_arp_timer)
-                  00002a38    00000050     driverlib.lib : sysctl.obj (.text:SysCtlPeripheralReset)
-                  00002a88    00000050     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
-                  00002ad8    0000004c                                   : cpy_tbl.obj (.text)
-                  00002b24    00000048     uartstdio.obj (.text:UARTwrite)
-                  00002b6c    00000048     driverlib.lib : sysctl.obj (.text:_SysCtlFrequencyGet)
-                  00002bb4    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.text)
-                  00002bf8    00000040                                   : u_divt2.obj (.text)
-                  00002c38    0000003c     enet_uip.obj (.text:ShowIPAddress)
-                  00002c74    00000038     driverlib.lib : sysctl.obj (.text:SysCtlPeripheralReady)
-                  00002cac    00000034     enet_uip.obj (.text:dhcpc_configured)
-                  00002ce0    00000034     dhcpc.obj (.text:dhcpc_init)
-                  00002d14    00000034     dhcpc.obj (.text:send_request)
-                  00002d48    00000034     uip.obj (.text:uip_add_rcv_nxt)
-                  00002d7c    00000030     dhcpc.obj (.text:send_discover)
-                  00002dac    0000002c     driverlib.lib : emac.obj (.text:EMACIntStatus)
-                  00002dd8    0000002c     uip.obj (.text:uip_listen)
-                  00002e04    0000002a     driverlib.lib : gpio.obj (.text:GPIODirModeSet)
-                  00002e2e    0000002a     ustdlib.obj (.text:ustrncpy)
-                  00002e58    00000028     enet_uip.obj (.text:SysTickIntHandler)
-                  00002e80    00000028     dhcpc.obj (.text:dhcpc_request)
-                  00002ea8    00000028     uip.obj (.text:uip_send)
-                  00002ed0    00000022     rtsv7M4_T_le_v4SPD16_eabi.lib : memcmp.obj (.text)
-                  00002ef2    00000002     --HOLE-- [fill = 0]
-                  00002ef4    00000020     driverlib.lib : sysctl.obj (.text:_SysCtlMemTimingGet)
-                  00002f14    00000020     dhcpc.obj (.text:add_req_ipaddr)
-                  00002f34    00000020     ustdlib.obj (.text:usprintf)
-                  00002f54    0000001e     dhcpc.obj (.text:add_req_options)
-                  00002f72    00000002     --HOLE-- [fill = 0]
-                  00002f74    0000001c     dhcpc.obj (.text:add_server_id)
-                  00002f90    0000001a     uartstdio.obj (.text:UARTprintf)
-                  00002faa    0000001a     uip_timer.obj (.text:timer_expired)
-                  00002fc4    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
-                  00002fdc    00000016     driverlib.lib : emac.obj (.text:EMACReset)
-                  00002ff2    00000002     --HOLE-- [fill = 0]
-                  00002ff4    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
-                  00003008    00000012     driverlib.lib : gpio.obj (.text:GPIOPinTypeEthernetLED)
-                  0000301a    00000012     dhcpc.obj (.text:add_msg_type)
-                  0000302c    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
-                  0000303a    0000000e     uip_timer.obj (.text:timer_set)
-                  00003048    0000000c     enet_uip.obj (.text:UpdateStatus)
-                  00003054    0000000c     enet_uip.obj (.text:clock_time)
-                  00003060    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
-                  0000306c    0000000a     uip.obj (.text:htons)
-                  00003076    00000008     dhcpc.obj (.text:add_end)
-                  0000307e    00000008     httpd.obj (.text:httpd_init)
-                  00003086    00000006     startup_ccs.obj (.text:ResetISR)
-                  0000308c    00000006     driverlib.lib : sysctl.obj (.text:SysCtlDelay)
-                  00003092    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
-                  00003098    00000006     enet_uip.obj (.text:uip_ipchksum)
-                  0000309e    00000006     enet_uip.obj (.text:uip_tcpchksum)
-                  000030a4    00000004     dhcpc.obj (.text:dhcpc_appcall)
-                  000030a8    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
+.text      0    00000200    00002f06     
+                  00000200    00000db0     uip.obj (.text:uip_process)
+                  00000fb0    00000430     enet_uip.obj (.text:main)
+                  000013e0    0000024d     ustdlib.obj (.text:uvsnprintf)
+                  0000162d    00000001     --HOLE-- [fill = 0]
+                  0000162e    00000002     startup_ccs.obj (.text:FaultISR)
+                  00001630    00000218     pinout.obj (.text:PinoutSet)
+                  00001848    00000200     driverlib.lib : sysctl.obj (.text:SysCtlClockFreqSet)
+                  00001a48    000001ea     uartstdio.obj (.text:UARTvprintf)
+                  00001c32    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  00001c34    00000158     uip_arp.obj (.text:uip_arp_out)
+                  00001d8c    00000132     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
+                  00001ebe    00000002     startup_ccs.obj (.text:NmiSR)
+                  00001ec0    000000ec     dhcpc.obj (.text:handle_dhcp)
+                  00001fac    000000d8     httpd.obj (.text:httpd_appcall)
+                  00002084    000000cc     uip_arp.obj (.text:uip_arp_arpin)
+                  00002150    000000cc     uip_arp.obj (.text:uip_arp_update)
+                  0000221c    000000a8     enet_uip.obj (.text:InitDescriptors)
+                  000022c4    000000a0     dhcpc.obj (.text:create_msg)
+                  00002364    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  00002400    00000094     uip.obj (.text:uip_udp_new)
+                  00002494    00000088     enet_uip.obj (.text:PacketTransmit)
+                  0000251c    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
+                  00002596    00000002                                   : i_div0.obj (.text)
+                  00002598    00000078     driverlib.lib : emac.obj (.text:EMACInit)
+                  00002610    00000070     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
+                  00002680    00000068     enet_uip.obj (.text:EthernetIntHandler)
+                  000026e8    00000068     enet_uip.obj (.text:PacketReceive)
+                  00002750    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  000027b8    00000068     dhcpc.obj (.text:parse_options)
+                  00002820    00000060     uartstdio.obj (.text:UARTStdioConfig)
+                  00002880    0000005c     dhcpc.obj (.text:parse_msg)
+                  000028dc    0000005c     uip.obj (.text:uip_init)
+                  00002938    00000058     driverlib.lib : emac.obj (.text:EMACPHYConfigSet)
+                  00002990    00000058     httpd.obj (.text:httpd_inc_page_count)
+                  000029e8    00000058     uip.obj (.text:uip_add32)
+                  00002a40    00000054     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
+                  00002a94    00000054                                   : exit.obj (.text)
+                  00002ae8    00000054     uip_arp.obj (.text:uip_arp_timer)
+                  00002b3c    00000050     driverlib.lib : sysctl.obj (.text:SysCtlPeripheralReset)
+                  00002b8c    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  00002bd8    00000048     uartstdio.obj (.text:UARTwrite)
+                  00002c20    00000048     driverlib.lib : sysctl.obj (.text:_SysCtlFrequencyGet)
+                  00002c68    00000040     rtsv7M4_T_le_v4SPD16_eabi.lib : u_divt2.obj (.text)
+                  00002ca8    0000003c     enet_uip.obj (.text:ShowIPAddress)
+                  00002ce4    00000038     driverlib.lib : sysctl.obj (.text:SysCtlPeripheralReady)
+                  00002d1c    00000034     enet_uip.obj (.text:dhcpc_configured)
+                  00002d50    00000034     dhcpc.obj (.text:dhcpc_init)
+                  00002d84    00000034     dhcpc.obj (.text:send_request)
+                  00002db8    00000034     uip.obj (.text:uip_add_rcv_nxt)
+                  00002dec    00000030     dhcpc.obj (.text:send_discover)
+                  00002e1c    0000002c     driverlib.lib : emac.obj (.text:EMACIntStatus)
+                  00002e48    0000002c     uip.obj (.text:uip_listen)
+                  00002e74    0000002a     driverlib.lib : gpio.obj (.text:GPIODirModeSet)
+                  00002e9e    0000002a     ustdlib.obj (.text:ustrncpy)
+                  00002ec8    00000028     enet_uip.obj (.text:SysTickIntHandler)
+                  00002ef0    00000028     uip.obj (.text:uip_send)
+                  00002f18    00000024     rtsv7M4_T_le_v4SPD16_eabi.lib : memcmp.obj (.text)
+                  00002f3c    00000020     driverlib.lib : sysctl.obj (.text:_SysCtlMemTimingGet)
+                  00002f5c    00000020     dhcpc.obj (.text:add_req_ipaddr)
+                  00002f7c    00000020     ustdlib.obj (.text:usprintf)
+                  00002f9c    0000001e     dhcpc.obj (.text:add_req_options)
+                  00002fba    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : mpu_init.obj (.text)
+                  00002fbc    0000001c     dhcpc.obj (.text:add_server_id)
+                  00002fd8    0000001a     uartstdio.obj (.text:UARTprintf)
+                  00002ff2    0000001a     uip_timer.obj (.text:timer_expired)
+                  0000300c    00000018     dhcpc.obj (.text:dhcpc_request)
+                  00003024    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  0000303c    00000016     driverlib.lib : emac.obj (.text:EMACReset)
+                  00003052    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : startup.obj (.text)
+                  00003054    00000014                                   : _lock.obj (.text)
+                  00003068    00000012     driverlib.lib : gpio.obj (.text:GPIOPinTypeEthernetLED)
+                  0000307a    00000012     dhcpc.obj (.text:add_msg_type)
+                  0000308c    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  0000309a    0000000e     uip_timer.obj (.text:timer_set)
+                  000030a8    0000000c     enet_uip.obj (.text:UpdateStatus)
+                  000030b4    0000000c     enet_uip.obj (.text:clock_time)
+                  000030c0    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  000030cc    0000000a     uip.obj (.text:htons)
+                  000030d6    00000008     dhcpc.obj (.text:add_end)
+                  000030de    00000008     httpd.obj (.text:httpd_init)
+                  000030e6    00000006     startup_ccs.obj (.text:ResetISR)
+                  000030ec    00000006     driverlib.lib : sysctl.obj (.text:SysCtlDelay)
+                  000030f2    00000006     enet_uip.obj (.text:uip_ipchksum)
+                  000030f8    00000006     enet_uip.obj (.text:uip_tcpchksum)
+                  000030fe    00000004     dhcpc.obj (.text:dhcpc_appcall)
+                  00003102    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
 
-.const     0    000030ac    00000614     
-                  000030ac    000002aa     httpd.obj (.const:.string:default_page_buf1of3)
-                  00003356    00000002     --HOLE-- [fill = 0]
-                  00003358    00000120     driverlib.lib : sysctl.obj (.const:g_pppui32XTALtoVCO)
-                  00003478    00000115     httpd.obj (.const:.string:page_not_found)
-                  0000358d    00000003     --HOLE-- [fill = 0]
-                  00003590    0000006c     driverlib.lib : sysctl.obj (.const:g_pui32Xtals)
-                  000035fc    00000030                   : sysctl.obj (.const:g_sXTALtoMEMTIM)
-                  0000362c    0000002b     httpd.obj (.const:.string:default_page_buf3of3)
-                  00003657    00000001     --HOLE-- [fill = 0]
-                  00003658    0000001c     uartstdio.obj (.const)
-                  00003674    00000018     driverlib.lib : emac.obj (.const)
-                  0000368c    00000012     uartstdio.obj (.const:.string)
-                  0000369e    0000000a     uip_arp.obj (.const)
-                  000036a8    00000008     dhcpc.obj (.const:.string)
-                  000036b0    00000008     driverlib.lib : sysctl.obj (.const)
-                  000036b8    00000008     uip.obj (.const)
+.const     0    00003108    0000068e     
+                  00003108    000002aa     httpd.obj (.const:.string:default_page_buf1of3)
+                  000033b2    00000002     --HOLE-- [fill = 0]
+                  000033b4    000001b0     driverlib.lib : sysctl.obj (.const:g_pppui32XTALtoVCO)
+                  00003564    00000115     httpd.obj (.const:.string:page_not_found)
+                  00003679    00000003     --HOLE-- [fill = 0]
+                  0000367c    0000006c     driverlib.lib : sysctl.obj (.const:g_pui32Xtals)
+                  000036e8    00000030                   : sysctl.obj (.const:g_sXTALtoMEMTIM)
+                  00003718    0000002b     httpd.obj (.const:.string:default_page_buf3of3)
+                  00003743    00000001     --HOLE-- [fill = 0]
+                  00003744    00000018     driverlib.lib : emac.obj (.const)
+                  0000375c    0000000c     uartstdio.obj (.const:g_ui32UARTBase)
+                  00003768    0000000c     uartstdio.obj (.const:g_ui32UARTPeriph)
+                  00003774    00000008     driverlib.lib : sysctl.obj (.const)
+                  0000377c    00000006     uip_arp.obj (.const:broadcast_ethaddr)
+                  00003782    00000004     dhcpc.obj (.const:.string:magic_cookie)
+                  00003786    00000004     dhcpc.obj (.const:.string:xid)
+                  0000378a    00000004     uip.obj (.const:all_ones_addr)
+                  0000378e    00000004     uip.obj (.const:all_zeroes_addr)
+                  00003792    00000004     uip_arp.obj (.const:broadcast_ipaddr)
 
-.cinit     0    000036c0    00000048     
-                  000036c0    0000001d     (.cinit..data.load) [load image, compression = rle]
-                  000036dd    00000003     --HOLE-- [fill = 0]
-                  000036e0    0000000c     (__TI_handler_table)
-                  000036ec    00000004     --HOLE-- [fill = 0]
-                  000036f0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  000036f8    00000010     (__TI_cinit_table)
+.cinit     0    00003798    00000040     
+                  00003798    0000001c     (.cinit..data.load) [load image, compression = lzss]
+                  000037b4    0000000c     (__TI_handler_table)
+                  000037c0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000037c8    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
 
 .bss       0    20000000    00001567     UNINITIALIZED
-                  20000000    00000644     enet_uip.obj (.bss:g_pui8UIPBuffer)
-                  20000644    00000600     enet_uip.obj (.bss:g_pui8RxBuffer)
-                  20000c44    00000600     enet_uip.obj (.bss:g_pui8TxBuffer)
-                  20001244    00000100     uip.obj (.bss:uip_udp_conns)
+                  20000000    00000644     (.common:g_pui8UIPBuffer)
+                  20000644    00000600     (.common:g_pui8RxBuffer)
+                  20000c44    00000600     (.common:g_pui8TxBuffer)
+                  20001244    00000100     (.common:uip_udp_conns)
                   20001344    00000060     uip_arp.obj (.bss:arp_table)
-                  200013a4    00000060     enet_uip.obj (.bss:g_psRxDescriptor)
-                  20001404    00000060     enet_uip.obj (.bss:g_psTxDescriptor)
-                  20001464    00000044     uip.obj (.bss:uip_conns)
+                  200013a4    00000060     (.common:g_psRxDescriptor)
+                  20001404    00000060     (.common:g_psTxDescriptor)
+                  20001464    00000044     (.common:uip_conns)
                   200014a8    00000034     dhcpc.obj (.bss:s)
-                  200014dc    00000034     uip.obj (.bss:uip_stat)
-                  20001510    00000008     (.common:uip_listenports)
-                  20001518    00000006     (.common:sTempAddr$1)
-                  2000151e    00000002     (.common:ipid)
-                  20001520    00000004     (.common:g_ui32Flags)
-                  20001524    00000004     (.common:g_ui32RxDescIndex)
-                  20001528    00000004     (.common:g_ui32TxDescIndex)
-                  2000152c    00000004     (.common:hs)
-                  20001530    00000004     (.common:ipaddr)
-                  20001534    00000004     (.common:iss)
-                  20001538    00000004     (.common:uip_acc32)
-                  2000153c    00000004     (.common:uip_appdata)
-                  20001540    00000004     (.common:uip_conn)
-                  20001544    00000004     (.common:uip_draddr)
-                  20001548    00000004     (.common:uip_hostaddr)
-                  2000154c    00000004     (.common:uip_netmask)
-                  20001550    00000004     (.common:uip_sappdata)
-                  20001554    00000004     (.common:uip_udp_conn)
-                  20001558    00000002     (.common:lastport)
-                  2000155a    00000002     (.common:tmp16)
-                  2000155c    00000002     (.common:uip_len)
-                  2000155e    00000002     (.common:uip_slen)
-                  20001560    00000001     (.common:arptime)
-                  20001561    00000001     (.common:c)
-                  20001562    00000001     (.common:c)
-                  20001563    00000001     (.common:i)
-                  20001564    00000001     (.common:opt)
-                  20001565    00000001     (.common:tmpage)
+                  200014dc    00000034     (.common:uip_stat)
+                  20001510    00000008     uip.obj (.bss)
+                  20001518    00000008     (.common:uip_listenports)
+                  20001520    00000006     enet_uip.obj (.bss:sTempAddr$1)
+                  20001526    00000002     (.common:uip_len)
+                  20001528    00000004     enet_uip.obj (.bss)
+                  2000152c    00000004     uip_arp.obj (.bss:ipaddr)
+                  20001530    00000004     uip.obj (.bss:iss)
+                  20001534    00000004     uip_arp.obj (.bss)
+                  20001538    00000004     (.common:g_ui32RxDescIndex)
+                  2000153c    00000004     (.common:g_ui32TxDescIndex)
+                  20001540    00000004     (.common:hs)
+                  20001544    00000004     (.common:uip_acc32)
+                  20001548    00000004     (.common:uip_appdata)
+                  2000154c    00000004     (.common:uip_conn)
+                  20001550    00000004     (.common:uip_draddr)
+                  20001554    00000004     (.common:uip_hostaddr)
+                  20001558    00000004     (.common:uip_netmask)
+                  2000155c    00000004     (.common:uip_sappdata)
+                  20001560    00000004     (.common:uip_udp_conn)
+                  20001564    00000002     (.common:uip_slen)
                   20001566    00000001     (.common:uip_flags)
-
-.TI.noinit 
-*          0    20000000    00000000     UNINITIALIZED
 
 .stack     0    20001568    00000200     UNINITIALIZED
                   20001568    00000200     --HOLE--
 
-.data      0    20001768    00000030     UNINITIALIZED
-                  20001768    00000008     enet_uip.obj (.data)
-                  20001770    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
-                  20001778    00000008                                   : exit.obj (.data)
-                  20001780    00000006     httpd.obj (.data)
-                  20001786    00000006     uip.obj (.data)
-                  2000178c    00000005     uartstdio.obj (.data)
-                  20001791    00000003     --HOLE--
-                  20001794    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
+.data      0    20001768    00000034     UNINITIALIZED
+                  20001768    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
+                  20001774    00000008                                   : _lock.obj (.data:$O1$$)
+                  2000177c    00000008     enet_uip.obj (.data)
+                  20001784    00000006     httpd.obj (.data:default_page_buf2of3)
+                  2000178a    00000006     uip.obj (.data:uip_ethaddr)
+                  20001790    00000005     uartstdio.obj (.data)
+                  20001795    00000003     --HOLE--
+                  20001798    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
 
-.TI.persistent 
-*          0    20001768    00000000     UNINITIALIZED
+MODULE SUMMARY
+
+       Module                     code    ro data   rw data
+       ------                     ----    -------   -------
+    .\
+       enet_uip.obj               1772    0         4894   
+       startup_ccs.obj            12      512       0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     1784    512       4894   
+                                                           
+    .\drivers\
+       pinout.obj                 536     0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     536     0         0      
+                                                           
+    .\third_party\uip-1.0\apps\dhcpc\
+       dhcpc.obj                  888     8         52     
+    +--+--------------------------+-------+---------+---------+
+       Total:                     888     8         52     
+                                                           
+    .\third_party\uip-1.0\apps\httpd\
+       httpd.obj                  312     1002      10     
+    +--+--------------------------+-------+---------+---------+
+       Total:                     312     1002      10     
+                                                           
+    .\third_party\uip-1.0\uip\
+       uip.obj                    3978    8         439    
+       uip_arp.obj                836     10        104    
+       uip_timer.obj              40      0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     4854    18        543    
+                                                           
+    .\utils\
+       uartstdio.obj              684     24        5      
+       ustdlib.obj                663     0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     1347    24        5      
+                                                           
+    C:/ti/TivaWare_C_Series-2.1.4.178/driverlib/ccs/Debug/driverlib.lib
+       sysctl.obj                 758     596       0      
+       gpio.obj                   366     0         0      
+       emac.obj                   274     24        0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     1398    620       0      
+                                                           
+    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.0.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.obj              156     0         0      
+       memset_t2.obj              122     0         0      
+       autoinit.obj               112     0         0      
+       copy_decompress_lzss.obj   104     0         0      
+       exit.obj                   84      0         12     
+       boot.obj                   84      0         0      
+       cpy_tbl.obj                76      0         0      
+       u_divt2.obj                64      0         0      
+       memcmp.obj                 36      0         0      
+       _lock.obj                  20      0         8      
+       args_main.obj              24      0         0      
+       copy_decompress_none.obj   14      0         0      
+       copy_zero_init.obj         12      0         0      
+       pre_init.obj               4       0         0      
+       stkdepth_vars.obj          0       0         4      
+       i_div0.obj                 2       0         0      
+       mpu_init.obj               2       0         0      
+       startup.obj                2       0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     918     0         24     
+                                                           
+       Stack:                     0       0         512    
+       Linker Generated:          0       64        0      
+    +--+--------------------------+-------+---------+---------+
+       Grand Total:               12037   2248      6040   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 000036f8 records: 2, size/record: 8, table size: 16
-	.data: load addr=000036c0, load size=0000001d bytes, run addr=20001768, run size=00000030 bytes, compression=rle
-	.bss: load addr=000036f0, load size=00000008 bytes, run addr=20000000, run size=00001567 bytes, compression=zero_init
+__TI_cinit_table @ 000037c8 records: 2, size/record: 8, table size: 16
+	.data: load addr=00003798, load size=0000001c bytes, run addr=20001768, run size=00000034 bytes, compression=lzss
+	.bss: load addr=000037c0, load size=00000008 bytes, run addr=20000000, run size=00001567 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 000036e0 records: 3, size/record: 4, table size: 12
-	index: 0, handler: __TI_decompress_rle24
+__TI_handler_table @ 000037b4 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
-address   name                    
--------   ----                    
-00002bb5  C$$EXIT                 
-0000253d  EMACInit                
-00002dad  EMACIntStatus           
-000028dd  EMACPHYConfigSet        
-00002fdd  EMACReset               
-0000268d  EthernetIntHandler      
-00002e05  GPIODirModeSet          
-00001d31  GPIOPadConfigSet        
-00003009  GPIOPinTypeEthernetLED  
-000021c1  InitDescriptors         
-000026f5  PacketReceive           
-000015d5  PinoutSet               
-00003087  ResetISR                
-UNDEFED   SHT$$INIT_ARRAY$$Base   
-UNDEFED   SHT$$INIT_ARRAY$$Limit  
-00002c39  ShowIPAddress           
-000017e9  SysCtlClockFreqSet      
-0000308d  SysCtlDelay             
-00002c75  SysCtlPeripheralReady   
-00002a39  SysCtlPeripheralReset   
-00002e59  SysTickIntHandler       
-000027c5  UARTStdioConfig         
-00002f91  UARTprintf              
-000019ed  UARTvprintf             
-00002b25  UARTwrite               
-00003049  UpdateStatus            
-20001768  __STACK_END             
-00000200  __STACK_SIZE            
-20001768  __STACK_TOP             
-000036f8  __TI_CINIT_Base         
-00003708  __TI_CINIT_Limit        
-000036e0  __TI_Handler_Table_Base 
-000036ec  __TI_Handler_Table_Limit
-000025b5  __TI_auto_init          
-20001778  __TI_cleanup_ptr        
-0000302d  __TI_decompress_none    
-00003093  __TI_decompress_rle24   
-2000177c  __TI_dtors_ptr          
-00000000  __TI_static_base__      
-00003061  __TI_zero_init          
-0000253b  __aeabi_idiv0           
-000024c1  __aeabi_memclr          
-000024c1  __aeabi_memclr4         
-000024c1  __aeabi_memclr8         
-00002309  __aeabi_memcpy          
-00002309  __aeabi_memcpy4         
-00002309  __aeabi_memcpy8         
-000024c3  __aeabi_memset          
-000024c3  __aeabi_memset4         
-000024c3  __aeabi_memset8         
-00002bf9  __aeabi_uidiv           
-00002bf9  __aeabi_uidivmod        
-ffffffff  __binit__               
-ffffffff  __c_args__              
-20001568  __stack                 
-00002fc5  _args_main              
-00002a89  _c_int00                
-20001770  _lock                   
-00003003  _nop                    
-00002ffb  _register_lock          
-00002ff5  _register_unlock        
-000030a9  _system_pre_init        
-20001774  _unlock                 
-00002bb9  abort                   
-ffffffff  binit                   
-00003055  clock_time              
-00002ad9  copy_in                 
-000030a5  dhcpc_appcall           
-00002cad  dhcpc_configured        
-00002ce1  dhcpc_init              
-00002e81  dhcpc_request           
-00002bc1  exit                    
-00000000  g_pfnVectors            
-200013a4  g_psRxDescriptor        
-20001404  g_psTxDescriptor        
-20000644  g_pui8RxBuffer          
-20000c44  g_pui8TxBuffer          
-20000000  g_pui8UIPBuffer         
-20001524  g_ui32RxDescIndex       
-2000176c  g_ui32TickCounter       
-20001528  g_ui32TxDescIndex       
-2000152c  hs                      
-0000306d  htons                   
-00001f51  httpd_appcall           
-0000307f  httpd_init              
-00000f55  main                    
-20001794  main_func_sp            
-00002ed1  memcmp                  
-00002309  memcpy                  
-000024c9  memset                  
-00002fab  timer_expired           
-0000303b  timer_set               
-20001538  uip_acc32               
-0000298d  uip_add32               
-2000153c  uip_appdata             
-00002029  uip_arp_arpin           
-00001bd9  uip_arp_out             
-000029e5  uip_arp_timer           
-20001768  uip_buf                 
-20001540  uip_conn                
-20001464  uip_conns               
-20001544  uip_draddr              
-20001786  uip_ethaddr             
-20001566  uip_flags               
-20001548  uip_hostaddr            
-00002881  uip_init                
-00003099  uip_ipchksum            
-2000155c  uip_len                 
-00002dd9  uip_listen              
-20001510  uip_listenports         
-2000154c  uip_netmask             
-00000201  uip_process             
-20001550  uip_sappdata            
-00002ea9  uip_send                
-2000155e  uip_slen                
-200014dc  uip_stat                
-0000309f  uip_tcpchksum           
-20001554  uip_udp_conn            
-20001244  uip_udp_conns           
-000023a5  uip_udp_new             
-00002f35  usprintf                
-00002e2f  ustrncpy                
-00001385  uvsnprintf              
+address   name                           
+-------   ----                           
+00002a95  C$$EXIT                        
+00002599  EMACInit                       
+00002e1d  EMACIntStatus                  
+00002939  EMACPHYConfigSet               
+0000303d  EMACReset                      
+00002681  EthernetIntHandler             
+00002e75  GPIODirModeSet                 
+00001d8d  GPIOPadConfigSet               
+00003069  GPIOPinTypeEthernetLED         
+0000221d  InitDescriptors                
+000026e9  PacketReceive                  
+00001631  PinoutSet                      
+000030e7  ResetISR                       
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+00002ca9  ShowIPAddress                  
+00001849  SysCtlClockFreqSet             
+000030ed  SysCtlDelay                    
+00002ce5  SysCtlPeripheralReady          
+00002b3d  SysCtlPeripheralReset          
+00002ec9  SysTickIntHandler              
+00002821  UARTStdioConfig                
+00002fd9  UARTprintf                     
+00001a49  UARTvprintf                    
+00002bd9  UARTwrite                      
+000030a9  UpdateStatus                   
+20001768  __STACK_END                    
+00000200  __STACK_SIZE                   
+20001768  __STACK_TOP                    
+000037c8  __TI_CINIT_Base                
+000037d8  __TI_CINIT_Limit               
+000037b4  __TI_Handler_Table_Base        
+000037c0  __TI_Handler_Table_Limit       
+00002611  __TI_auto_init                 
+20001768  __TI_cleanup_ptr               
+00002751  __TI_decompress_lzss           
+0000308d  __TI_decompress_none           
+2000176c  __TI_dtors_ptr                 
+20001770  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00000000  __TI_static_base__             
+000030c1  __TI_zero_init                 
+00002597  __aeabi_idiv0                  
+0000251d  __aeabi_memclr                 
+0000251d  __aeabi_memclr4                
+0000251d  __aeabi_memclr8                
+00002365  __aeabi_memcpy                 
+00002365  __aeabi_memcpy4                
+00002365  __aeabi_memcpy8                
+0000251f  __aeabi_memset                 
+0000251f  __aeabi_memset4                
+0000251f  __aeabi_memset8                
+00002c69  __aeabi_uidiv                  
+00002c69  __aeabi_uidivmod               
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+00002fbb  __mpu_init                     
+20001568  __stack                        
+00003025  _args_main                     
+00002a41  _c_int00                       
+20001774  _lock                          
+00003063  _nop                           
+0000305b  _register_lock                 
+00003055  _register_unlock               
+00003053  _system_post_cinit             
+00003103  _system_pre_init               
+20001778  _unlock                        
+00002a99  abort                          
+ffffffff  binit                          
+000030b5  clock_time                     
+00002b8d  copy_in                        
+000030ff  dhcpc_appcall                  
+00002d1d  dhcpc_configured               
+00002d51  dhcpc_init                     
+0000300d  dhcpc_request                  
+00002aa1  exit                           
+00000000  g_pfnVectors                   
+200013a4  g_psRxDescriptor               
+20001404  g_psTxDescriptor               
+20000644  g_pui8RxBuffer                 
+20000c44  g_pui8TxBuffer                 
+20000000  g_pui8UIPBuffer                
+20001538  g_ui32RxDescIndex              
+20001780  g_ui32TickCounter              
+2000153c  g_ui32TxDescIndex              
+20001540  hs                             
+000030cd  htons                          
+00001fad  httpd_appcall                  
+000030df  httpd_init                     
+00000fb1  main                           
+20001798  main_func_sp                   
+00002f19  memcmp                         
+00002365  memcpy                         
+00002525  memset                         
+00002ff3  timer_expired                  
+0000309b  timer_set                      
+20001544  uip_acc32                      
+000029e9  uip_add32                      
+20001548  uip_appdata                    
+00002085  uip_arp_arpin                  
+00001c35  uip_arp_out                    
+00002ae9  uip_arp_timer                  
+2000177c  uip_buf                        
+2000154c  uip_conn                       
+20001464  uip_conns                      
+20001550  uip_draddr                     
+2000178a  uip_ethaddr                    
+20001566  uip_flags                      
+20001554  uip_hostaddr                   
+000028dd  uip_init                       
+000030f3  uip_ipchksum                   
+20001526  uip_len                        
+00002e49  uip_listen                     
+20001518  uip_listenports                
+20001558  uip_netmask                    
+00000201  uip_process                    
+2000155c  uip_sappdata                   
+00002ef1  uip_send                       
+20001564  uip_slen                       
+200014dc  uip_stat                       
+000030f9  uip_tcpchksum                  
+20001560  uip_udp_conn                   
+20001244  uip_udp_conns                  
+00002401  uip_udp_new                    
+00002f7d  usprintf                       
+00002e9f  ustrncpy                       
+000013e1  uvsnprintf                     
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
-address   name                    
--------   ----                    
-00000000  __TI_static_base__      
-00000000  g_pfnVectors            
-00000200  __STACK_SIZE            
-00000201  uip_process             
-00000f55  main                    
-00001385  uvsnprintf              
-000015d5  PinoutSet               
-000017e9  SysCtlClockFreqSet      
-000019ed  UARTvprintf             
-00001bd9  uip_arp_out             
-00001d31  GPIOPadConfigSet        
-00001f51  httpd_appcall           
-00002029  uip_arp_arpin           
-000021c1  InitDescriptors         
-00002309  __aeabi_memcpy          
-00002309  __aeabi_memcpy4         
-00002309  __aeabi_memcpy8         
-00002309  memcpy                  
-000023a5  uip_udp_new             
-000024c1  __aeabi_memclr          
-000024c1  __aeabi_memclr4         
-000024c1  __aeabi_memclr8         
-000024c3  __aeabi_memset          
-000024c3  __aeabi_memset4         
-000024c3  __aeabi_memset8         
-000024c9  memset                  
-0000253b  __aeabi_idiv0           
-0000253d  EMACInit                
-000025b5  __TI_auto_init          
-0000268d  EthernetIntHandler      
-000026f5  PacketReceive           
-000027c5  UARTStdioConfig         
-00002881  uip_init                
-000028dd  EMACPHYConfigSet        
-0000298d  uip_add32               
-000029e5  uip_arp_timer           
-00002a39  SysCtlPeripheralReset   
-00002a89  _c_int00                
-00002ad9  copy_in                 
-00002b25  UARTwrite               
-00002bb5  C$$EXIT                 
-00002bb9  abort                   
-00002bc1  exit                    
-00002bf9  __aeabi_uidiv           
-00002bf9  __aeabi_uidivmod        
-00002c39  ShowIPAddress           
-00002c75  SysCtlPeripheralReady   
-00002cad  dhcpc_configured        
-00002ce1  dhcpc_init              
-00002dad  EMACIntStatus           
-00002dd9  uip_listen              
-00002e05  GPIODirModeSet          
-00002e2f  ustrncpy                
-00002e59  SysTickIntHandler       
-00002e81  dhcpc_request           
-00002ea9  uip_send                
-00002ed1  memcmp                  
-00002f35  usprintf                
-00002f91  UARTprintf              
-00002fab  timer_expired           
-00002fc5  _args_main              
-00002fdd  EMACReset               
-00002ff5  _register_unlock        
-00002ffb  _register_lock          
-00003003  _nop                    
-00003009  GPIOPinTypeEthernetLED  
-0000302d  __TI_decompress_none    
-0000303b  timer_set               
-00003049  UpdateStatus            
-00003055  clock_time              
-00003061  __TI_zero_init          
-0000306d  htons                   
-0000307f  httpd_init              
-00003087  ResetISR                
-0000308d  SysCtlDelay             
-00003093  __TI_decompress_rle24   
-00003099  uip_ipchksum            
-0000309f  uip_tcpchksum           
-000030a5  dhcpc_appcall           
-000030a9  _system_pre_init        
-000036e0  __TI_Handler_Table_Base 
-000036ec  __TI_Handler_Table_Limit
-000036f8  __TI_CINIT_Base         
-00003708  __TI_CINIT_Limit        
-20000000  g_pui8UIPBuffer         
-20000644  g_pui8RxBuffer          
-20000c44  g_pui8TxBuffer          
-20001244  uip_udp_conns           
-200013a4  g_psRxDescriptor        
-20001404  g_psTxDescriptor        
-20001464  uip_conns               
-200014dc  uip_stat                
-20001510  uip_listenports         
-20001524  g_ui32RxDescIndex       
-20001528  g_ui32TxDescIndex       
-2000152c  hs                      
-20001538  uip_acc32               
-2000153c  uip_appdata             
-20001540  uip_conn                
-20001544  uip_draddr              
-20001548  uip_hostaddr            
-2000154c  uip_netmask             
-20001550  uip_sappdata            
-20001554  uip_udp_conn            
-2000155c  uip_len                 
-2000155e  uip_slen                
-20001566  uip_flags               
-20001568  __stack                 
-20001768  __STACK_END             
-20001768  __STACK_TOP             
-20001768  uip_buf                 
-2000176c  g_ui32TickCounter       
-20001770  _lock                   
-20001774  _unlock                 
-20001778  __TI_cleanup_ptr        
-2000177c  __TI_dtors_ptr          
-20001786  uip_ethaddr             
-20001794  main_func_sp            
-ffffffff  __binit__               
-ffffffff  __c_args__              
-ffffffff  binit                   
-UNDEFED   SHT$$INIT_ARRAY$$Base   
-UNDEFED   SHT$$INIT_ARRAY$$Limit  
+address   name                           
+-------   ----                           
+00000000  __TI_static_base__             
+00000000  g_pfnVectors                   
+00000200  __STACK_SIZE                   
+00000201  uip_process                    
+00000fb1  main                           
+000013e1  uvsnprintf                     
+00001631  PinoutSet                      
+00001849  SysCtlClockFreqSet             
+00001a49  UARTvprintf                    
+00001c35  uip_arp_out                    
+00001d8d  GPIOPadConfigSet               
+00001fad  httpd_appcall                  
+00002085  uip_arp_arpin                  
+0000221d  InitDescriptors                
+00002365  __aeabi_memcpy                 
+00002365  __aeabi_memcpy4                
+00002365  __aeabi_memcpy8                
+00002365  memcpy                         
+00002401  uip_udp_new                    
+0000251d  __aeabi_memclr                 
+0000251d  __aeabi_memclr4                
+0000251d  __aeabi_memclr8                
+0000251f  __aeabi_memset                 
+0000251f  __aeabi_memset4                
+0000251f  __aeabi_memset8                
+00002525  memset                         
+00002597  __aeabi_idiv0                  
+00002599  EMACInit                       
+00002611  __TI_auto_init                 
+00002681  EthernetIntHandler             
+000026e9  PacketReceive                  
+00002751  __TI_decompress_lzss           
+00002821  UARTStdioConfig                
+000028dd  uip_init                       
+00002939  EMACPHYConfigSet               
+000029e9  uip_add32                      
+00002a41  _c_int00                       
+00002a95  C$$EXIT                        
+00002a99  abort                          
+00002aa1  exit                           
+00002ae9  uip_arp_timer                  
+00002b3d  SysCtlPeripheralReset          
+00002b8d  copy_in                        
+00002bd9  UARTwrite                      
+00002c69  __aeabi_uidiv                  
+00002c69  __aeabi_uidivmod               
+00002ca9  ShowIPAddress                  
+00002ce5  SysCtlPeripheralReady          
+00002d1d  dhcpc_configured               
+00002d51  dhcpc_init                     
+00002e1d  EMACIntStatus                  
+00002e49  uip_listen                     
+00002e75  GPIODirModeSet                 
+00002e9f  ustrncpy                       
+00002ec9  SysTickIntHandler              
+00002ef1  uip_send                       
+00002f19  memcmp                         
+00002f7d  usprintf                       
+00002fbb  __mpu_init                     
+00002fd9  UARTprintf                     
+00002ff3  timer_expired                  
+0000300d  dhcpc_request                  
+00003025  _args_main                     
+0000303d  EMACReset                      
+00003053  _system_post_cinit             
+00003055  _register_unlock               
+0000305b  _register_lock                 
+00003063  _nop                           
+00003069  GPIOPinTypeEthernetLED         
+0000308d  __TI_decompress_none           
+0000309b  timer_set                      
+000030a9  UpdateStatus                   
+000030b5  clock_time                     
+000030c1  __TI_zero_init                 
+000030cd  htons                          
+000030df  httpd_init                     
+000030e7  ResetISR                       
+000030ed  SysCtlDelay                    
+000030f3  uip_ipchksum                   
+000030f9  uip_tcpchksum                  
+000030ff  dhcpc_appcall                  
+00003103  _system_pre_init               
+000037b4  __TI_Handler_Table_Base        
+000037c0  __TI_Handler_Table_Limit       
+000037c8  __TI_CINIT_Base                
+000037d8  __TI_CINIT_Limit               
+20000000  g_pui8UIPBuffer                
+20000644  g_pui8RxBuffer                 
+20000c44  g_pui8TxBuffer                 
+20001244  uip_udp_conns                  
+200013a4  g_psRxDescriptor               
+20001404  g_psTxDescriptor               
+20001464  uip_conns                      
+200014dc  uip_stat                       
+20001518  uip_listenports                
+20001526  uip_len                        
+20001538  g_ui32RxDescIndex              
+2000153c  g_ui32TxDescIndex              
+20001540  hs                             
+20001544  uip_acc32                      
+20001548  uip_appdata                    
+2000154c  uip_conn                       
+20001550  uip_draddr                     
+20001554  uip_hostaddr                   
+20001558  uip_netmask                    
+2000155c  uip_sappdata                   
+20001560  uip_udp_conn                   
+20001564  uip_slen                       
+20001566  uip_flags                      
+20001568  __stack                        
+20001768  __STACK_END                    
+20001768  __STACK_TOP                    
+20001768  __TI_cleanup_ptr               
+2000176c  __TI_dtors_ptr                 
+20001770  __TI_enable_exit_profile_output
+20001774  _lock                          
+20001778  _unlock                        
+2000177c  uip_buf                        
+20001780  g_ui32TickCounter              
+2000178a  uip_ethaddr                    
+20001798  main_func_sp                   
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
 
-[123 symbols]
+[129 symbols]
