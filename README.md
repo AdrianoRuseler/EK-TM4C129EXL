@@ -12,5 +12,5 @@ http://www.ti.com/tool/sw-tm4c
 ## Code Generation Tools for Texas Instruments Processors
 http://software-dl.ti.com/codegen/non-esd/downloads/download.htm
 
-##TI-RTOS: Real-Time Operating System (RTOS)
+## TI-RTOS: Real-Time Operating System (RTOS)
 http://www.ti.com/tool/TI-RTOS
